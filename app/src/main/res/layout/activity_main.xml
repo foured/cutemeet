@@ -4,15 +4,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mainscreen_bg"
     tools:context=".MainActivity">
 
-    <TextView
+    <ImageView
+        android:id="@+id/bottomPanel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_marginBottom="15dp"
+        android:contentDescription="@string/NULL"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:srcCompat="@drawable/bottompanel_border" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomPanel"
+        app:layout_constraintEnd_toEndOf="@+id/bottomPanel"
+        app:layout_constraintStart_toStartOf="@+id/bottomPanel"
+        app:layout_constraintTop_toTopOf="@+id/bottomPanel">
+
+        <ImageButton
+            android:id="@+id/messabgerButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            app:srcCompat="@drawable/bottompanel_messengerbutton" />
+
+        <ImageButton
+            android:id="@+id/questionnairesButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            app:srcCompat="@drawable/bottompanel_questionnairesbutton" />
+
+        <ImageButton
+            android:id="@+id/eventsButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            app:srcCompat="@drawable/bottompanel_eventsbutton" />
+
+        <ImageButton
+            android:id="@+id/newsButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            app:srcCompat="@drawable/bottompanel_newsbutton" />
+
+        <ImageButton
+            android:id="@+id/imageButton13"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            app:srcCompat="@drawable/bottompanel_accountbutton" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
