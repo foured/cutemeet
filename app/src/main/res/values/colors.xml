@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="mainscreen_bg">#1F1F1F</color>
     <color name="mainPanels_bg">#25252A</color>
+    <color name="textColor">#F3F7FB</color>
 </resources>

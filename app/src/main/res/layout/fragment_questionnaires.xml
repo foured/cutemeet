@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainscreen_bg"
+    tools:context=".Messanger">
+
+    <LinearLayout
+        android:id="@+id/questionnairesPanel_bottomPanel_linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottompanel_border"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/bottomPanel"
+        app:layout_constraintEnd_toEndOf="@+id/bottomPanel"
+        app:layout_constraintStart_toStartOf="@+id/bottomPanel"
+        app:layout_constraintTop_toTopOf="@+id/bottomPanel">
+
+        <ImageButton
+            android:id="@+id/questionnairesPanel_messabgerButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            app:srcCompat="@drawable/bottompanel_messengerbutton" />
+
+        <ImageButton
+            android:id="@+id/questionnairesPanel_questionnairesButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            app:srcCompat="@drawable/bottompanel_questionnairesbutton" />
+
+        <ImageButton
+            android:id="@+id/questionnairesPanel_eventsButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            app:srcCompat="@drawable/bottompanel_eventsbutton" />
+
+        <ImageButton
+            android:id="@+id/questionnairesPanel_newsButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            app:srcCompat="@drawable/bottompanel_newsbutton" />
+
+        <ImageButton
+            android:id="@+id/questionnairesPanel_imageButton13"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            app:srcCompat="@drawable/bottompanel_accountbutton" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/questionnairesPanel_pageTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="0dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Анкеты"
+        android:textColor="@color/textColor"
+        android:textSize="40sp"
+        android:typeface="sans" />
+
+    <LinearLayout
+        android:id="@+id/questionnairesPanel_toolsPanel_linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="26dp"
+        android:background="@drawable/tooslpanel_border_4elems"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/questionnairesPanel_locationButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            android:src="@drawable/tooslpanel_position"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:id="@+id/questionnairesPanel_magnifierButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            android:src="@drawable/tooslpanel_magnifier"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:id="@+id/questionnairesPanel_plusButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            android:src="@drawable/tooslpanel_plus"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:id="@+id/questionnairesPanel_settingsButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            android:src="@drawable/tooslpanelsettings"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/questionnairesPanel_topDevidor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="55dp"
+        android:src="@drawable/topdevidor" />
+
+    <ImageButton
+        android:id="@+id/questionnairesPanel_questionnaireButton_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="72dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/NULL"
+        android:src="@drawable/questionnairespanel_questionnairepanel_placeholder" />
+
+    <ImageButton
+        android:id="@+id/questionnairesPanel_questionnaireButton_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="138dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/NULL"
+        android:src="@drawable/questionnairespanel_questionnairepanel_placeholder" />
+
+    <ImageButton
+        android:id="@+id/questionnairesPanel_questionnaireButton_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="204dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/NULL"
+        android:src="@drawable/questionnairespanel_questionnairepanel_placeholder" />
+
+</FrameLayout>
