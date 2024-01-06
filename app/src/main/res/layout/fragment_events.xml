@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="@+id/bottomPanel">
 
         <ImageButton
-            android:id="@+id/eventsPanel_messabgerButton"
+            android:id="@+id/eventsPanel_messangerButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

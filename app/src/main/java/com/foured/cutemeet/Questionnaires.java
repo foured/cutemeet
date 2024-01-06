@@ -2,7 +2,10 @@ package com.foured.cutemeet;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,5 +63,13 @@ public class Questionnaires extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_questionnaires, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        view.findViewById(R.id.questionnairesPanel_messabgerButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_questionnaires_to_messanger));
+        view.findViewById(R.id.questionnairesPanel_eventsButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_questionnaires_to_events));
+        view.findViewById(R.id.questionnairesPanel_newsButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_questionnaires_to_news));
     }
 }

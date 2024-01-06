@@ -3,25 +3,65 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/news">
+    app:startDestination="@id/messanger">
     <fragment
         android:id="@+id/messanger"
         android:name="com.foured.cutemeet.Messanger"
         android:label="fragment_messanger"
-        tools:layout="@layout/fragment_messanger" />
+        tools:layout="@layout/fragment_messanger" >
+        <action
+            android:id="@+id/action_messanger_to_questionnaires"
+            app:destination="@id/questionnaires" />
+        <action
+            android:id="@+id/action_messanger_to_events"
+            app:destination="@id/events" />
+        <action
+            android:id="@+id/action_messanger_to_news"
+            app:destination="@id/news" />
+    </fragment>
     <fragment
         android:id="@+id/questionnaires"
         android:name="com.foured.cutemeet.Questionnaires"
         android:label="fragment_questionnaires"
-        tools:layout="@layout/fragment_questionnaires" />
+        tools:layout="@layout/fragment_questionnaires" >
+        <action
+            android:id="@+id/action_questionnaires_to_news"
+            app:destination="@id/news" />
+        <action
+            android:id="@+id/action_questionnaires_to_messanger"
+            app:destination="@id/messanger" />
+        <action
+            android:id="@+id/action_questionnaires_to_events"
+            app:destination="@id/events" />
+    </fragment>
     <fragment
         android:id="@+id/events"
         android:name="com.foured.cutemeet.Events"
         android:label="fragment_events"
-        tools:layout="@layout/fragment_events" />
+        tools:layout="@layout/fragment_events" >
+        <action
+            android:id="@+id/action_events_to_questionnaires"
+            app:destination="@id/questionnaires" />
+        <action
+            android:id="@+id/action_events_to_messanger"
+            app:destination="@id/messanger" />
+        <action
+            android:id="@+id/action_events_to_news"
+            app:destination="@id/news" />
+    </fragment>
     <fragment
         android:id="@+id/news"
         android:name="com.foured.cutemeet.News"
         android:label="fragment_news"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news" >
+        <action
+            android:id="@+id/action_news_to_questionnaires"
+            app:destination="@id/questionnaires" />
+        <action
+            android:id="@+id/action_news_to_events"
+            app:destination="@id/events" />
+        <action
+            android:id="@+id/action_news_to_messanger"
+            app:destination="@id/messanger" />
+    </fragment>
 </navigation>
