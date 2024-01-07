@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,5 +72,10 @@ public class RegistrationScreen_1 extends Fragment {
         ((EditText) view.findViewById(R.id.registrationPanel_1_surnameEditText)).getText().clear();
         ((EditText) view.findViewById(R.id.registrationPanel_1_nameEditText)).getText().clear();
         ((EditText) view.findViewById(R.id.registrationPanel_1_middleNameEditText)).getText().clear();
+
+        view.findViewById(R.id.registrationPanel_1_loginButton)
+                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_registrationScreen_1_to_logInScreen));
+        view.findViewById(R.id.registrationPanel_1_nextButton)
+                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_registrationScreen_1_to_registrationScreen_2));
     }
 }

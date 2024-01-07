@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,5 +70,9 @@ public class PasswordRecoveryScreen_2_2 extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ((EditText) view.findViewById(R.id.passwordRecoveryPanel_2_2_enterEmailEditText)).getText().clear();
+        view.findViewById(R.id.passwordRecoveryPanel_2_2_backButton)
+                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_passwordRecoveryScreen_2_2_to_passwordRecoveryScreen_1));
+        view.findViewById(R.id.passwordRecoveryPanel_2_2_nextButton)
+                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_passwordRecoveryScreen_2_2_to_passwordRecoveryScreen_3));
     }
 }

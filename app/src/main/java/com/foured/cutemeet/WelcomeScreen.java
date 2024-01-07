@@ -2,7 +2,10 @@ package com.foured.cutemeet;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,5 +63,12 @@ public class WelcomeScreen extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_welcome_screen, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        view.findViewById(R.id.welcomePanel_enterAccountButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeScreen_to_logInScreen));
+        view.findViewById(R.id.welcomePanel_registrationButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeScreen_to_registrationScreen_1));
     }
 }

@@ -2,7 +2,10 @@ package com.foured.cutemeet;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,5 +63,16 @@ public class PasswordRecoveryScreen_1 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_password_recovery_screen_1, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        view.findViewById(R.id.passwordRecoveryPanel_1_byPhoneButton)
+                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_passwordRecoveryScreen_1_to_passwordRecoveryScreen_2_1));
+        view.findViewById(R.id.passwordRecoveryPanel_1_byEmailButton)
+                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_passwordRecoveryScreen_1_to_passwordRecoveryScreen_2_2));
+        view.findViewById(R.id.passwordRecoveryPanel_1_backButton)
+                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_passwordRecoveryScreen_1_to_logInScreen));
     }
 }

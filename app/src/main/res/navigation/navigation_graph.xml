@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/passwordRecoveryScreen_4">
+    app:startDestination="@id/welcomeScreen">
     <fragment
         android:id="@+id/messanger"
         android:name="com.foured.cutemeet.Messanger"
@@ -68,22 +68,66 @@
         android:id="@+id/welcomeScreen"
         android:name="com.foured.cutemeet.WelcomeScreen"
         android:label="fragment_welcome_screen"
-        tools:layout="@layout/fragment_welcome_screen" />
+        tools:layout="@layout/fragment_welcome_screen" >
+        <action
+            android:id="@+id/action_welcomeScreen_to_logInScreen"
+            app:destination="@id/logInScreen"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_welcomeScreen_to_registrationScreen_1"
+            app:destination="@id/registrationScreen_1"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
     <fragment
         android:id="@+id/registrationScreen_1"
         android:name="com.foured.cutemeet.RegistrationScreen_1"
         android:label="fragment_registration_screen_1"
-        tools:layout="@layout/fragment_registration_screen_1" />
+        tools:layout="@layout/fragment_registration_screen_1" >
+        <action
+            android:id="@+id/action_registrationScreen_1_to_registrationScreen_2"
+            app:destination="@id/registrationScreen_2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_registrationScreen_1_to_logInScreen"
+            app:destination="@id/logInScreen"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/registrationScreen_2"
         android:name="com.foured.cutemeet.RegistrationScreen_2"
         android:label="fragment_registration_screen_2"
-        tools:layout="@layout/fragment_registration_screen_2" />
+        tools:layout="@layout/fragment_registration_screen_2" >
+        <action
+            android:id="@+id/action_registrationScreen_2_to_registrationScreen_3"
+            app:destination="@id/registrationScreen_3"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_registrationScreen_2_to_registrationScreen_1"
+            app:destination="@id/registrationScreen_1"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/registrationScreen_3"
         android:name="com.foured.cutemeet.RegistrationScreen_3"
         android:label="fragment_registration_screen_3"
-        tools:layout="@layout/fragment_registration_screen_3" />
+        tools:layout="@layout/fragment_registration_screen_3" >
+        <action
+            android:id="@+id/action_registrationScreen_3_to_registrationScreen_4"
+            app:destination="@id/registrationScreen_4"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_registrationScreen_3_to_registrationScreen_2"
+            app:destination="@id/registrationScreen_2"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/registrationScreen_4"
         android:name="com.foured.cutemeet.RegistrationScreen_4"
@@ -93,27 +137,87 @@
         android:id="@+id/logInScreen"
         android:name="com.foured.cutemeet.LogInScreen"
         android:label="fragment_log_in_screen"
-        tools:layout="@layout/fragment_log_in_screen" />
+        tools:layout="@layout/fragment_log_in_screen" >
+        <action
+            android:id="@+id/action_logInScreen_to_passwordRecoveryScreen_1"
+            app:destination="@id/passwordRecoveryScreen_1"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_logInScreen_to_registrationScreen_1"
+            app:destination="@id/registrationScreen_1"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
     <fragment
         android:id="@+id/passwordRecoveryScreen_1"
         android:name="com.foured.cutemeet.PasswordRecoveryScreen_1"
         android:label="fragment_password_recovery_screen_1"
-        tools:layout="@layout/fragment_password_recovery_screen_1" />
+        tools:layout="@layout/fragment_password_recovery_screen_1" >
+        <action
+            android:id="@+id/action_passwordRecoveryScreen_1_to_logInScreen"
+            app:destination="@id/logInScreen"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_passwordRecoveryScreen_1_to_passwordRecoveryScreen_2_1"
+            app:destination="@id/passwordRecoveryScreen_2_1"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_passwordRecoveryScreen_1_to_passwordRecoveryScreen_2_2"
+            app:destination="@id/passwordRecoveryScreen_2_2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
     <fragment
         android:id="@+id/passwordRecoveryScreen_2_1"
         android:name="com.foured.cutemeet.PasswordRecoveryScreen_2_1"
         android:label="fragment_password_recovery_screen_2_1"
-        tools:layout="@layout/fragment_password_recovery_screen_2_1" />
+        tools:layout="@layout/fragment_password_recovery_screen_2_1" >
+        <action
+            android:id="@+id/action_passwordRecoveryScreen_2_1_to_passwordRecoveryScreen_3"
+            app:destination="@id/passwordRecoveryScreen_3"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_passwordRecoveryScreen_2_1_to_passwordRecoveryScreen_1"
+            app:destination="@id/passwordRecoveryScreen_1"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/passwordRecoveryScreen_2_2"
         android:name="com.foured.cutemeet.PasswordRecoveryScreen_2_2"
         android:label="fragment_password_recovery_screen_2_2"
-        tools:layout="@layout/fragment_password_recovery_screen_2_2" />
+        tools:layout="@layout/fragment_password_recovery_screen_2_2" >
+        <action
+            android:id="@+id/action_passwordRecoveryScreen_2_2_to_passwordRecoveryScreen_3"
+            app:destination="@id/passwordRecoveryScreen_3"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_passwordRecoveryScreen_2_2_to_passwordRecoveryScreen_1"
+            app:destination="@id/passwordRecoveryScreen_1"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/passwordRecoveryScreen_3"
         android:name="com.foured.cutemeet.PasswordRecoveryScreen_3"
         android:label="fragment_password_recovery_screen_3"
-        tools:layout="@layout/fragment_password_recovery_screen_3" />
+        tools:layout="@layout/fragment_password_recovery_screen_3" >
+        <action
+            android:id="@+id/action_passwordRecoveryScreen_3_to_passwordRecoveryScreen_4"
+            app:destination="@id/passwordRecoveryScreen_4"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_passwordRecoveryScreen_3_to_passwordRecoveryScreen_1"
+            app:destination="@id/passwordRecoveryScreen_1"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/passwordRecoveryScreen_4"
         android:name="com.foured.cutemeet.PasswordRecoveryScreen_4"

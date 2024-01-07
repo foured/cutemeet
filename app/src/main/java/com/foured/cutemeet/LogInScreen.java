@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -70,5 +71,9 @@ public class LogInScreen extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         ((EditText) view.findViewById(R.id.logInPanel_userDataEditText)).getText().clear();
         ((EditText) view.findViewById(R.id.logInPanel_passwordEditText)).getText().clear();
+        view.findViewById(R.id.logInPanel_forgotPasswordButton)
+                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_logInScreen_to_passwordRecoveryScreen_1));
+        view.findViewById(R.id.logInPanel_registerButton)
+                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_logInScreen_to_registrationScreen_1));
     }
 }
