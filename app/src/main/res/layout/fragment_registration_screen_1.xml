@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrationScreen_1"
+    android:background="@color/mainscreen_bg">
+
+    <TextView
+        android:id="@+id/registrationPanel_1_registerText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="54dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="Регистрация"
+        android:textColor="@color/textColor"
+        android:textSize="40sp" />
+
+    <FrameLayout
+        android:id="@+id/registrationPanel_1_bgPanel_FrameLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="126dp"
+        android:background="@drawable/loginsignup_bg_3rfl_1bl">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="56dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/registrationPanel_1_surnameEditText"
+                android:layout_width="314dp"
+                android:layout_height="48dp"
+                android:text="delete me"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/textColor"
+                android:background="@drawable/loginsignup_textinputbg"
+                android:padding="0dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/registrationPanel_1_surnameText"
+            android:layout_width="314dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Фамилия*"
+            android:textColor="@color/textColor"
+            android:textSize="24sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="149dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/registrationPanel_1_nameEditText"
+                android:layout_width="314dp"
+                android:layout_height="48dp"
+                android:text="delete me"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/textColor"
+                android:background="@drawable/loginsignup_textinputbg"
+                android:padding="0dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/registrationPanel_1_nameText"
+            android:layout_width="314dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="116dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Имя*"
+            android:textColor="@color/textColor"
+            android:textSize="24sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="242dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/registrationPanel_1_middleNameEditText"
+                android:layout_width="314dp"
+                android:layout_height="48dp"
+                android:text="delete me"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/textColor"
+                android:background="@drawable/loginsignup_textinputbg"
+                android:padding="0dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/registrationPanel_1_middleNameText"
+            android:layout_width="314dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="210dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Отчество"
+            android:textColor="@color/textColor"
+            android:textSize="24sp" />
+
+        <ImageButton
+            android:id="@+id/registrationPanel_1_loginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="11dp"
+            android:layout_marginTop="309dp"
+            android:src="@drawable/loginsignup_enterbutton_2"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            />
+
+        <ImageButton
+            android:id="@+id/registrationPanel_1_nextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="191dp"
+            android:layout_marginTop="309dp"
+            android:src="@drawable/loginsignup_nextbutton"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/registrationPanel_1_pageNumberImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pagenumberimage_1"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="108dp"
+        />
+
+</FrameLayout>

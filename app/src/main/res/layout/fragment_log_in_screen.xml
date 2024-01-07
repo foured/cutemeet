@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LogInScreen"
+    android:background="@color/mainscreen_bg">
+
+    <TextView
+        android:id="@+id/logInPanel_loginText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Вход"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="40dp"
+        android:textColor="@color/textColor"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="54dp"/>
+
+    <FrameLayout
+        android:layout_width="371dp"
+        android:layout_height="344dp"
+        android:background="@drawable/loginsignup_bg_3rfl_1bl"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="126dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="56dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/logInPanel_userDataEditText"
+                android:layout_width="314dp"
+                android:layout_height="48dp"
+                android:text="delete me"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/textColor"
+                android:background="@drawable/loginsignup_textinputbg"
+                android:padding="0dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/logInPanel_userDataText"
+            android:layout_width="314dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="18dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Номер телефона / электронная почта / псевдоним"
+            android:textColor="@color/textColor"
+            android:textSize="16sp" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="149dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/logInPanel_passwordEditText"
+                android:layout_width="314dp"
+                android:layout_height="48dp"
+                android:text="delete me"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/textColor"
+                android:background="@drawable/loginsignup_textinputbg"
+                android:padding="0dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/logInPanel_passwordText"
+            android:layout_width="314dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="117dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Пароль"
+            android:textColor="@color/textColor"
+            android:textSize="24sp" />
+
+        <ImageButton
+            android:id="@+id/logInPanel_registerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/loginsignup_registerbutton"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="217dp"
+            android:layout_marginLeft="8dp"
+            android:contentDescription="@string/NULL"/>
+
+        <ImageButton
+            android:id="@+id/logInPanel_loginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/loginsignup_enterbutton_2"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="217dp"
+            android:layout_gravity="right"
+            android:layout_marginRight="8dp"
+            android:contentDescription="@string/NULL"/>
+
+        <ImageButton
+            android:id="@+id/logInPanel_forgotPasswordButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/loginsignup_forgotpasswordbutton"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="276dp"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/NULL"/>
+
+    </FrameLayout>
+
+</FrameLayout>

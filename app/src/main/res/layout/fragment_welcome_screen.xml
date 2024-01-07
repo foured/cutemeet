@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainscreen_bg"
+    tools:context=".WelcomeScreen">
+
+
+    <TextView
+        android:id="@+id/welcomePanel_weclomeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="47dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="Добро пожаловать"
+        android:textColor="@color/textColor"
+        android:textSize="40sp" />
+
+    <LinearLayout
+        android:id="@+id/welcomePanel_buttonsPanel_linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="126dp"
+        android:background="@drawable/loginsignup_bg_0rfl_1bl"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/welcomePanel_registrationButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:layout_marginStart="8dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            android:src="@drawable/loginsignup_registerbutton" />
+
+        <ImageButton
+            android:id="@+id/welcomePanel_enterAccountButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:layout_marginStart="8dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            android:src="@drawable/loginsignup_enterbutton_1" />
+    </LinearLayout>
+
+</FrameLayout>
