@@ -7,10 +7,17 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
+
+import com.foured.cutemeet.algorithms.RegistrationFieldsChecker;
+
+import java.util.regex.Pattern;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -74,5 +81,27 @@ public class PasswordRecoveryScreen_2_1 extends Fragment {
                 .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_passwordRecoveryScreen_2_1_to_passwordRecoveryScreen_1));
         view.findViewById(R.id.passwordRecoveryPanel_2_1_nextButton)
                 .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_passwordRecoveryScreen_2_1_to_passwordRecoveryScreen_3));
+
+        ((EditText) view.findViewById(R.id.passwordRecoveryPanel_2_1_enterPhoneNumberEditText)).addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(RegistrationFieldsChecker.isPhoneNumber(s)){
+                    ((ImageView) view.findViewById(R.id.passwordRecoveryPanel_2_1_phoneNumberEditText_correctImage)).setImageResource(R.drawable.correctlineimage);
+                }
+                else{
+                    ((ImageView) view.findViewById(R.id.passwordRecoveryPanel_2_1_phoneNumberEditText_correctImage)).setImageResource(R.drawable.wronglineimage);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 }
