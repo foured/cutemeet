@@ -43,6 +43,14 @@
                 android:padding="0dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
+        <ImageView
+            android:id="@+id/registrationPanel_1_surnameEditText_correctImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/wronglineimage"
+            android:layout_marginTop="68dp"
+            android:layout_marginLeft="300dp"/>
+
         <TextView
             android:id="@+id/registrationPanel_1_surnameText"
             android:layout_width="314dp"
@@ -71,6 +79,14 @@
                 android:padding="0dp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
+        <ImageView
+            android:id="@+id/registrationPanel_1_nameEditText_correctImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/wronglineimage"
+            android:layout_marginTop="161dp"
+            android:layout_marginLeft="300dp"/>
+
         <TextView
             android:id="@+id/registrationPanel_1_nameText"
             android:layout_width="314dp"
@@ -98,7 +114,6 @@
                 android:background="@drawable/loginsignup_textinputbg"
                 android:padding="0dp"/>
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <TextView
             android:id="@+id/registrationPanel_1_middleNameText"

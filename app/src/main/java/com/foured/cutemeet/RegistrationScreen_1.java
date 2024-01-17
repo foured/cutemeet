@@ -7,10 +7,18 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.foured.cutemeet.algorithms.RegistrationFieldsChecker;
+import com.foured.cutemeet.config.ConstStrings;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -75,7 +83,64 @@ public class RegistrationScreen_1 extends Fragment {
 
         view.findViewById(R.id.registrationPanel_1_loginButton)
                 .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_registrationScreen_1_to_logInScreen));
-        view.findViewById(R.id.registrationPanel_1_nextButton)
-                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_registrationScreen_1_to_registrationScreen_2));
+        //Navigation.createNavigateOnClickListener(R.id.action_registrationScreen_1_to_registrationScreen_2)
+        view.findViewById( R.id.registrationPanel_1_nextButton)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        EditText snET = view.findViewById(R.id.registrationPanel_1_surnameEditText);
+                        EditText nET = view.findViewById(R.id.registrationPanel_1_nameEditText);
+
+                        if(RegistrationFieldsChecker.isTextLine(snET.getText()) && RegistrationFieldsChecker.isTextLine(nET.getText())){
+                            Navigation.findNavController(view).navigate(R.id.action_registrationScreen_1_to_registrationScreen_2);
+                        }
+                        else{
+                            Toast.makeText(view.getContext(), ConstStrings.wrongRegistrationLine, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+        ((EditText) view.findViewById(R.id.registrationPanel_1_surnameEditText)).addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(RegistrationFieldsChecker.isTextLine(s)){
+                    ((ImageView) view.findViewById(R.id.registrationPanel_1_surnameEditText_correctImage)).setImageResource(R.drawable.correctlineimage);
+                }
+                else{
+                    ((ImageView) view.findViewById(R.id.registrationPanel_1_surnameEditText_correctImage)).setImageResource(R.drawable.wronglineimage);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        ((EditText) view.findViewById(R.id.registrationPanel_1_nameEditText)).addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(RegistrationFieldsChecker.isTextLine(s)){
+                    ((ImageView) view.findViewById(R.id.registrationPanel_1_nameEditText_correctImage)).setImageResource(R.drawable.correctlineimage);
+                }
+                else{
+                    ((ImageView) view.findViewById(R.id.registrationPanel_1_nameEditText_correctImage)).setImageResource(R.drawable.wronglineimage);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 }

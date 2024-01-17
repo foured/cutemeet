@@ -14,8 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.foured.cutemeet.algorithms.RegistrationFieldsChecker;
+import com.foured.cutemeet.config.ConstStrings;
 
 import java.util.regex.Pattern;
 
@@ -77,10 +79,24 @@ public class PasswordRecoveryScreen_2_1 extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ((EditText) view.findViewById(R.id.passwordRecoveryPanel_2_1_enterPhoneNumberEditText)).getText().clear();
+
         view.findViewById(R.id.passwordRecoveryPanel_2_1_backButton)
                 .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_passwordRecoveryScreen_2_1_to_passwordRecoveryScreen_1));
+        //Navigation.createNavigateOnClickListener(R.id.action_passwordRecoveryScreen_2_1_to_passwordRecoveryScreen_3)
         view.findViewById(R.id.passwordRecoveryPanel_2_1_nextButton)
-                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_passwordRecoveryScreen_2_1_to_passwordRecoveryScreen_3));
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        EditText pnET = view.findViewById(R.id.passwordRecoveryPanel_2_1_enterPhoneNumberEditText);
+
+                        if(RegistrationFieldsChecker.isPhoneNumber(pnET.getText())){
+                            Navigation.findNavController(view).navigate(R.id.action_passwordRecoveryScreen_2_1_to_passwordRecoveryScreen_3);
+                        }
+                        else{
+                            Toast.makeText(view.getContext(), ConstStrings.wrongRegistrationLine, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
 
         ((EditText) view.findViewById(R.id.passwordRecoveryPanel_2_1_enterPhoneNumberEditText)).addTextChangedListener(new TextWatcher() {
             @Override

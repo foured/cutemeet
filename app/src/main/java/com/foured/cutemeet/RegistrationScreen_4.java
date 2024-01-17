@@ -6,10 +6,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
+
+import com.foured.cutemeet.algorithms.RegistrationFieldsChecker;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -71,5 +76,26 @@ public class RegistrationScreen_4 extends Fragment {
         ((EditText) view.findViewById(R.id.registrationPanel_4_usernameEditText)).getText().clear();
         ((EditText) view.findViewById(R.id.registrationPanel_4_passwordEditText)).getText().clear();
         ((EditText) view.findViewById(R.id.registrationPanel_4_passwordConfirmEditText)).getText().clear();
+        ((EditText) view.findViewById(R.id.registrationPanel_4_usernameEditText)).addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(RegistrationFieldsChecker.isUsername(s)){
+                    ((ImageView) view.findViewById(R.id.registrationPanel_4_usernameEditText_correctImage)).setImageResource(R.drawable.correctlineimage);
+                }
+                else{
+                    ((ImageView) view.findViewById(R.id.registrationPanel_4_usernameEditText_correctImage)).setImageResource(R.drawable.wronglineimage);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 }

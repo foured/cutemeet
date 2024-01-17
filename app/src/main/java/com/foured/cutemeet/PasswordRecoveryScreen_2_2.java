@@ -14,8 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.foured.cutemeet.algorithms.RegistrationFieldsChecker;
+import com.foured.cutemeet.config.ConstStrings;
 
 import java.util.regex.Pattern;
 
@@ -79,8 +81,21 @@ public class PasswordRecoveryScreen_2_2 extends Fragment {
         ((EditText) view.findViewById(R.id.passwordRecoveryPanel_2_2_enterEmailEditText)).getText().clear();
         view.findViewById(R.id.passwordRecoveryPanel_2_2_backButton)
                 .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_passwordRecoveryScreen_2_2_to_passwordRecoveryScreen_1));
+        //R.id.action_passwordRecoveryScreen_2_2_to_passwordRecoveryScreen_3
         view.findViewById(R.id.passwordRecoveryPanel_2_2_nextButton)
-                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_passwordRecoveryScreen_2_2_to_passwordRecoveryScreen_3));
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        EditText eET = view.findViewById(R.id.passwordRecoveryPanel_2_2_enterEmailEditText);
+
+                        if(RegistrationFieldsChecker.isEmailAddress(eET.getText())){
+                            Navigation.findNavController(view).navigate(R.id.action_passwordRecoveryScreen_2_2_to_passwordRecoveryScreen_3);
+                        }
+                        else {
+                            Toast.makeText(view.getContext(), ConstStrings.wrongRegistrationLine, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
 
         ((EditText) view.findViewById(R.id.passwordRecoveryPanel_2_2_enterEmailEditText)).addTextChangedListener(new TextWatcher() {
             @Override

@@ -7,10 +7,17 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.foured.cutemeet.algorithms.RegistrationFieldsChecker;
+import com.foured.cutemeet.config.ConstStrings;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,6 +66,14 @@ public class RegistrationScreen_2 extends Fragment {
         }
     }
 
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_registration_screen_2, container, false);
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -67,14 +82,65 @@ public class RegistrationScreen_2 extends Fragment {
 
         view.findViewById(R.id.registrationPanel_2_backButton)
                 .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_registrationScreen_2_to_registrationScreen_1));
+        //Navigation.createNavigateOnClickListener(R.id.action_registrationScreen_2_to_registrationScreen_3
         view.findViewById(R.id.registrationPanel_2_nextButton)
-                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_registrationScreen_2_to_registrationScreen_3));
-    }
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        EditText pnET = view.findViewById(R.id.registrationPanel_2_phoneNumberEditText);
+                        EditText eET = view.findViewById(R.id.registrationPanel_2_emailEditText);
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_registration_screen_2, container, false);
+                        if(RegistrationFieldsChecker.isPhoneNumber(pnET.getText()) && RegistrationFieldsChecker.isEmailAddress(eET.getText())){
+                            Navigation.findNavController(view).navigate(R.id.action_registrationScreen_2_to_registrationScreen_3);
+                        }
+                        else{
+                            Toast.makeText(view.getContext(), ConstStrings.wrongRegistrationLine, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+        ((EditText) view.findViewById(R.id.registrationPanel_2_phoneNumberEditText)).addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(RegistrationFieldsChecker.isPhoneNumber(s)){
+                    ((ImageView) view.findViewById(R.id.registrationPanel_2_phoneNumberEditText_correctImage)).setImageResource(R.drawable.correctlineimage);
+                }
+                else{
+                    ((ImageView) view.findViewById(R.id.registrationPanel_2_phoneNumberEditText_correctImage)).setImageResource(R.drawable.wronglineimage);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        ((EditText) view.findViewById(R.id.registrationPanel_2_emailEditText)).addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(RegistrationFieldsChecker.isEmailAddress(s)){
+                    ((ImageView) view.findViewById(R.id.registrationPanel_2_emailEditText_correctImage)).setImageResource(R.drawable.correctlineimage);
+                }
+                else{
+                    ((ImageView) view.findViewById(R.id.registrationPanel_2_emailEditText_correctImage)).setImageResource(R.drawable.wronglineimage);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 }
