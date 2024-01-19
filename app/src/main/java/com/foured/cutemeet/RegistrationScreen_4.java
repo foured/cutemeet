@@ -1,5 +1,7 @@
 package com.foured.cutemeet;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -167,12 +169,15 @@ public class RegistrationScreen_4 extends Fragment {
                     uad.password = String.valueOf(pET.getText());
                     uad.userName = String.valueOf(unET.getText());
 
-                    System.out.println(uad.name);
-                    System.out.println(uad.surname);
-                    System.out.println(uad.middleName);
-                    System.out.println(uad.phoneNumber);
-                    System.out.println(uad.email);
-                    System.out.println(uad.password);
+                    //SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+                    //SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                    //System.out.println(uad.name);
+                    //System.out.println(uad.surname);
+                    //System.out.println(uad.middleName);
+                    //System.out.println(uad.phoneNumber);
+                    //System.out.println(uad.email);
+                    //System.out.println(uad.password);
                 }
                 else{
                     Toast.makeText(view.getContext(), ConstStrings.wrongRegistrationLine, Toast.LENGTH_LONG).show();

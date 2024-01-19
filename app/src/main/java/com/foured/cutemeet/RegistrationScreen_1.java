@@ -28,8 +28,6 @@ import com.foured.cutemeet.models.UserAccountData;
  */
 public class RegistrationScreen_1 extends Fragment {
 
-    private UserAccountData uad;
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -67,7 +65,6 @@ public class RegistrationScreen_1 extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-            uad = (UserAccountData) getArguments().getSerializable("user_account_data");
         }
     }
 
@@ -98,6 +95,7 @@ public class RegistrationScreen_1 extends Fragment {
                         if(RegistrationFieldsChecker.isTextLine(snET.getText()) && RegistrationFieldsChecker.isTextLine(nET.getText())){
                             EditText mnET = view.findViewById(R.id.registrationPanel_1_middleNameEditText);
                             Bundle bundle = new Bundle();
+                            UserAccountData uad = new UserAccountData();
                             uad.surname = String.valueOf(snET.getText());
                             uad.name = String.valueOf(nET.getText());
                             uad.middleName = String.valueOf(mnET.getText());

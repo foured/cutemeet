@@ -72,10 +72,7 @@ public class WelcomeScreen extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         view.findViewById(R.id.welcomePanel_enterAccountButton)
                 .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeScreen_to_logInScreen));
-        Bundle bundle = new Bundle();
-        UserAccountData uad = new UserAccountData();
-        bundle.putSerializable("user_account_data", uad);
         view.findViewById(R.id.welcomePanel_registrationButton)
-                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeScreen_to_registrationScreen_1, bundle));
+                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeScreen_to_registrationScreen_1));
     }
 }
