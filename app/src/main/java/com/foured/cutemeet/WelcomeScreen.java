@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.foured.cutemeet.models.UserAccountData;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link WelcomeScreen#newInstance} factory method to
@@ -68,7 +70,12 @@ public class WelcomeScreen extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        view.findViewById(R.id.welcomePanel_enterAccountButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeScreen_to_logInScreen));
-        view.findViewById(R.id.welcomePanel_registrationButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeScreen_to_registrationScreen_1));
+        view.findViewById(R.id.welcomePanel_enterAccountButton)
+                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeScreen_to_logInScreen));
+        Bundle bundle = new Bundle();
+        UserAccountData uad = new UserAccountData();
+        bundle.putSerializable("user_account_data", uad);
+        view.findViewById(R.id.welcomePanel_registrationButton)
+                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeScreen_to_registrationScreen_1, bundle));
     }
 }

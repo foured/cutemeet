@@ -17,4 +17,8 @@ public class RegistrationFieldsChecker {
     public static boolean isUsername(CharSequence s){
         return Pattern.matches("^[^@]*[a-zA-Zа-яА-Я]+[^@]*$", s) && s.length() >= 3;
     }
+
+    public static boolean isPassword(CharSequence s){
+        return s.length() >= 4;
+    }
 }

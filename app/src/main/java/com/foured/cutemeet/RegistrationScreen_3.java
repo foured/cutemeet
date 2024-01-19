@@ -12,12 +12,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.foured.cutemeet.models.UserAccountData;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link RegistrationScreen_3#newInstance} factory method to
  * create an instance of this fragment.
  */
 public class RegistrationScreen_3 extends Fragment {
+    private UserAccountData uad;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -56,6 +59,7 @@ public class RegistrationScreen_3 extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            uad = (UserAccountData) getArguments().getSerializable("user_account_data");
         }
     }
 
@@ -73,7 +77,9 @@ public class RegistrationScreen_3 extends Fragment {
 
         view.findViewById(R.id.registrationPanel_3_backButton)
                 .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_registrationScreen_3_to_registrationScreen_2));
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("user_account_data", uad);
         view.findViewById(R.id.registrationPanel_3_nextButton)
-                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_registrationScreen_3_to_registrationScreen_4));
+                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_registrationScreen_3_to_registrationScreen_4, bundle));
     }
 }

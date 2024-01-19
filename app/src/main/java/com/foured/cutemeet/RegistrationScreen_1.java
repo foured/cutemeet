@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.foured.cutemeet.algorithms.RegistrationFieldsChecker;
 import com.foured.cutemeet.config.ConstStrings;
+import com.foured.cutemeet.models.UserAccountData;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +27,8 @@ import com.foured.cutemeet.config.ConstStrings;
  * create an instance of this fragment.
  */
 public class RegistrationScreen_1 extends Fragment {
+
+    private UserAccountData uad;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -64,6 +67,7 @@ public class RegistrationScreen_1 extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            uad = (UserAccountData) getArguments().getSerializable("user_account_data");
         }
     }
 
@@ -92,7 +96,13 @@ public class RegistrationScreen_1 extends Fragment {
                         EditText nET = view.findViewById(R.id.registrationPanel_1_nameEditText);
 
                         if(RegistrationFieldsChecker.isTextLine(snET.getText()) && RegistrationFieldsChecker.isTextLine(nET.getText())){
-                            Navigation.findNavController(view).navigate(R.id.action_registrationScreen_1_to_registrationScreen_2);
+                            EditText mnET = view.findViewById(R.id.registrationPanel_1_middleNameEditText);
+                            Bundle bundle = new Bundle();
+                            uad.surname = String.valueOf(snET.getText());
+                            uad.name = String.valueOf(nET.getText());
+                            uad.middleName = String.valueOf(mnET.getText());
+                            bundle.putSerializable("user_account_data", uad);
+                            Navigation.findNavController(view).navigate(R.id.action_registrationScreen_1_to_registrationScreen_2, bundle);
                         }
                         else{
                             Toast.makeText(view.getContext(), ConstStrings.wrongRegistrationLine, Toast.LENGTH_LONG).show();

@@ -12,9 +12,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.foured.cutemeet.algorithms.RegistrationFieldsChecker;
+import com.foured.cutemeet.config.ConstStrings;
+import com.foured.cutemeet.models.UserAccountData;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +26,8 @@ import com.foured.cutemeet.algorithms.RegistrationFieldsChecker;
  * create an instance of this fragment.
  */
 public class RegistrationScreen_4 extends Fragment {
+
+    private UserAccountData uad;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,6 +66,7 @@ public class RegistrationScreen_4 extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            uad = (UserAccountData) getArguments().getSerializable("user_account_data");
         }
     }
 
@@ -73,10 +80,14 @@ public class RegistrationScreen_4 extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ((EditText) view.findViewById(R.id.registrationPanel_4_usernameEditText)).getText().clear();
-        ((EditText) view.findViewById(R.id.registrationPanel_4_passwordEditText)).getText().clear();
-        ((EditText) view.findViewById(R.id.registrationPanel_4_passwordConfirmEditText)).getText().clear();
-        ((EditText) view.findViewById(R.id.registrationPanel_4_usernameEditText)).addTextChangedListener(new TextWatcher() {
+        EditText unET = (EditText) view.findViewById(R.id.registrationPanel_4_usernameEditText);
+        EditText pET = (EditText) view.findViewById(R.id.registrationPanel_4_passwordEditText);
+        EditText pcET = (EditText) view.findViewById(R.id.registrationPanel_4_passwordConfirmEditText);
+
+        unET.getText().clear();
+        pET.getText().clear();
+        pcET.getText().clear();
+        unET.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -95,6 +106,77 @@ public class RegistrationScreen_4 extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
 
+            }
+        });
+        pET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(RegistrationFieldsChecker.isPassword(s)){
+                    ((ImageView) view.findViewById(R.id.registrationPanel_4_passwordEditText_correctImage)).setImageResource(R.drawable.correctlineimage);
+                }
+                else{
+                    ((ImageView) view.findViewById(R.id.registrationPanel_4_passwordEditText_correctImage)).setImageResource(R.drawable.wronglineimage);
+                }
+
+                if(String.valueOf(pcET.getText()).equals(String.valueOf(pET.getText()))){
+                    ((ImageView) view.findViewById(R.id.registrationPanel_4_passwordConfirmEditText_correctImage)).setImageResource(R.drawable.correctlineimage);
+                }
+                else{
+                    ((ImageView) view.findViewById(R.id.registrationPanel_4_passwordConfirmEditText_correctImage)).setImageResource(R.drawable.wronglineimage);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        pcET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(String.valueOf(pcET.getText()).equals(String.valueOf(pET.getText()))){
+                    ((ImageView) view.findViewById(R.id.registrationPanel_4_passwordConfirmEditText_correctImage)).setImageResource(R.drawable.correctlineimage);
+                }
+                else{
+                    ((ImageView) view.findViewById(R.id.registrationPanel_4_passwordConfirmEditText_correctImage)).setImageResource(R.drawable.wronglineimage);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
+        view.findViewById(R.id.registrationPanel_4_compliteRegistrationButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(RegistrationFieldsChecker.isUsername(unET.getText()) && RegistrationFieldsChecker.isPassword(pET.getText())
+                 && String.valueOf(pcET.getText()).equals(String.valueOf(pET.getText()))){
+                    uad.password = String.valueOf(pET.getText());
+                    uad.userName = String.valueOf(unET.getText());
+
+                    System.out.println(uad.name);
+                    System.out.println(uad.surname);
+                    System.out.println(uad.middleName);
+                    System.out.println(uad.phoneNumber);
+                    System.out.println(uad.email);
+                    System.out.println(uad.password);
+                }
+                else{
+                    Toast.makeText(view.getContext(), ConstStrings.wrongRegistrationLine, Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

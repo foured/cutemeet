@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.foured.cutemeet.algorithms.RegistrationFieldsChecker;
 import com.foured.cutemeet.config.ConstStrings;
+import com.foured.cutemeet.models.UserAccountData;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +26,8 @@ import com.foured.cutemeet.config.ConstStrings;
  * create an instance of this fragment.
  */
 public class RegistrationScreen_2 extends Fragment {
+
+    private UserAccountData uad;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -63,6 +66,7 @@ public class RegistrationScreen_2 extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+            uad = (UserAccountData) getArguments().getSerializable("user_account_data");
         }
     }
 
@@ -91,7 +95,11 @@ public class RegistrationScreen_2 extends Fragment {
                         EditText eET = view.findViewById(R.id.registrationPanel_2_emailEditText);
 
                         if(RegistrationFieldsChecker.isPhoneNumber(pnET.getText()) && RegistrationFieldsChecker.isEmailAddress(eET.getText())){
-                            Navigation.findNavController(view).navigate(R.id.action_registrationScreen_2_to_registrationScreen_3);
+                            Bundle bundle = new Bundle();
+                            uad.phoneNumber = String.valueOf(pnET.getText());
+                            uad.email = String.valueOf(eET.getText());
+                            bundle.putSerializable("user_account_data", uad);
+                            Navigation.findNavController(view).navigate(R.id.action_registrationScreen_2_to_registrationScreen_3, bundle);
                         }
                         else{
                             Toast.makeText(view.getContext(), ConstStrings.wrongRegistrationLine, Toast.LENGTH_LONG).show();
