@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -105,12 +106,15 @@ public class Events extends Fragment {
             public void onHttpResponse(String result) {
                 // Обработка результата после выполнения GET-запроса в фоновом потоке
                 List<EventData> eventList = parseJsonArray(result, EventData.class);
-
+                System.out.println(result);
                 eventsAdapter = new EventsAdapter((ArrayList<EventData>) eventList);
+                DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(eventsList.getContext(),
+                        layoutManager.getOrientation());
+                eventsList.addItemDecoration(dividerItemDecoration);
+
+                eventsList.setAdapter(eventsAdapter);
             }
         });
-
-        eventsList.setAdapter(eventsAdapter);
     }
 
     private static <T> List<T> parseJsonArray(String jsonArrayString, Class<T> classOfT) {
