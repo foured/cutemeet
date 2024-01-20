@@ -38,4 +38,6 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation("androidx.navigation:navigation-fragment:$nav_version")
     implementation("androidx.navigation:navigation-ui:$nav_version")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("com.google.code.gson:gson:2.8.9")
 }

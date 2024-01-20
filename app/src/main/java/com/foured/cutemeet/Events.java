@@ -6,10 +6,26 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+
+import com.foured.cutemeet.adapters.EventsAdapter;
+import com.foured.cutemeet.config.ConstStrings;
+import com.foured.cutemeet.models.EventData;
+import com.foured.cutemeet.net.HTTP;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,6 +33,9 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class Events extends Fragment {
+
+    private RecyclerView eventsList;
+    private EventsAdapter eventsAdapter;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -68,8 +87,43 @@ public class Events extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ImageButton createEventButton = view.findViewById(R.id.eventsPanel_newEventButton);
+
         view.findViewById(R.id.eventsPanel_messangerButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_events_to_messanger));
         view.findViewById(R.id.eventsPanel_questionnairesButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_events_to_questionnaires));
         view.findViewById(R.id.eventsPanel_newsButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_events_to_news));
+
+        createEventButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_events_to_createEventPanel_1));
+
+        eventsList = view.findViewById(R.id.eventsPanel_eventsPrev_recyclerView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
+        eventsList.setLayoutManager(layoutManager);
+        eventsList.setHasFixedSize(true);
+
+        HTTP.getHttpResponseAsync(ConstStrings.serverAddress + "/a/all", new HTTP.HttpResponseListener() {
+            @Override
+            public void onHttpResponse(String result) {
+                // Обработка результата после выполнения GET-запроса в фоновом потоке
+                List<EventData> eventList = parseJsonArray(result, EventData.class);
+
+                eventsAdapter = new EventsAdapter((ArrayList<EventData>) eventList);
+            }
+        });
+
+        eventsList.setAdapter(eventsAdapter);
+    }
+
+    private static <T> List<T> parseJsonArray(String jsonArrayString, Class<T> classOfT) {
+        List<T> resultList = new ArrayList<>();
+
+        Gson gson = new Gson();
+        JsonArray jsonArray = JsonParser.parseString(jsonArrayString).getAsJsonArray();
+
+        for (JsonElement jsonElement : jsonArray) {
+            T object = gson.fromJson(jsonElement, classOfT);
+            resultList.add(object);
+        }
+
+        return resultList;
     }
 }

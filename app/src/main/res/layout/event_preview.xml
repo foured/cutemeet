@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/eventPrev_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/eventspanel_eventprew" />
+
+    <ImageButton
+        android:id="@+id/eventPrev_moreInfoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/eventspanel_moreinfobutton"
+        android:background="@android:color/transparent"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="11dp" />
+
+    <TextView
+        android:id="@+id/eventPrev_eventNameText"
+        android:layout_width="314dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Название мероприятия"
+        android:textColor="@color/textColor"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/eventPrev_senderNameText"
+        android:layout_width="314dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="39dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Имя отправителя"
+        android:textColor="@color/textColor"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/eventPrev_eventLocationText"
+        android:layout_width="314dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="70dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Место"
+        android:textColor="@color/textColor"
+        android:textSize="24sp" />
+
+
+</FrameLayout>

@@ -79,56 +79,15 @@
         android:textSize="40sp"
         android:typeface="sans" />
 
-    <LinearLayout
-        android:id="@+id/eventsPanel_toolsPanel_linearLayout"
+    <ImageButton
+        android:id="@+id/eventsPanel_newEventButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|right"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="26dp"
-        android:background="@drawable/tooslpanel_border_4elems"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/eventsPanel_locationButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/NULL"
-            android:src="@drawable/tooslpanel_position"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <ImageButton
-            android:id="@+id/eventsPanel_magnifierButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/NULL"
-            android:src="@drawable/tooslpanel_magnifier"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <ImageButton
-            android:id="@+id/eventsPanel_plusButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/NULL"
-            android:src="@drawable/tooslpanel_plus"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <ImageButton
-            android:id="@+id/eventsPanel_settingsButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/NULL"
-            android:src="@drawable/tooslpanelsettings"
-            tools:ignore="TouchTargetSizeCheck" />
-    </LinearLayout>
+        android:src="@drawable/eventspanel_createeventbutton"
+        android:background="@android:color/transparent"
+        android:layout_gravity="right"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="11dp"/>
 
     <ImageView
         android:id="@+id/eventsPanel_topDevidor"
@@ -138,34 +97,10 @@
         android:layout_marginTop="55dp"
         android:src="@drawable/topdevidor" />
 
-    <ImageButton
-        android:id="@+id/eventsPanel_eventButton_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_marginTop="72dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/NULL"
-        android:src="@drawable/eventspanel_eventpanel_placeholder" />
-
-    <ImageButton
-        android:id="@+id/eventsPanel_eventButton_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_marginTop="138dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/NULL"
-        android:src="@drawable/eventspanel_eventpanel_placeholder" />
-
-    <ImageButton
-        android:id="@+id/eventsPanel_eventButton_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_marginTop="204dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/NULL"
-        android:src="@drawable/eventspanel_eventpanel_placeholder" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/eventsPanel_eventsPrev_recyclerView"
+        android:layout_width="400dp"
+        android:layout_height="520dp"
+        android:layout_marginTop="90dp"/>
 
 </FrameLayout>

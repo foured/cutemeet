@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".createEventPanel_1"
+    android:background="@color/mainscreen_bg">
+
+    <TextView
+        android:id="@+id/createEventsPanel_2_pageTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="0dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="События"
+        android:textColor="@color/textColor"
+        android:textSize="40sp"
+        android:typeface="sans" />
+
+    <ImageView
+        android:id="@+id/createEventsPanel_2_topDevidor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="55dp"
+        android:src="@drawable/topdevidor" />
+
+    <TextView
+        android:id="@+id/createEventsPanel_2_pageSubtitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="55dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Создание"
+        android:textColor="@color/textColor"
+        android:textSize="40sp"
+        android:typeface="sans" />
+
+    <FrameLayout
+        android:layout_width="371dp"
+        android:layout_height="570dp"
+        android:background="@drawable/eventspanel_bg"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="126dp">
+
+        <TextView
+            android:id="@+id/createEventsPanel_2_tagsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="29dp"
+            android:layout_marginTop="35dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Теги: "
+            android:textColor="@color/textColor"
+            android:textSize="24sp"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/createEventsPanel_2_tagsExamplesText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="42dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="(Спорт, прогулки)"
+            android:textColor="@color/textColor"
+            android:textSize="15sp"
+            android:typeface="sans" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="390dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="76dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/createEventsPanel_2_tagsEditText"
+                android:layout_width="314dp"
+                android:layout_height="384dp"
+                android:gravity="top|left"
+                android:text="delete me"
+                android:textSize="15sp"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/textColor"
+                android:background="@drawable/eventspanel_tagsinputbg"
+                android:padding="10dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/createEventsPanel_2_backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|bottom"
+            android:layout_marginLeft="11dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/loginsignup_backbutton"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            />
+
+        <ImageButton
+            android:id="@+id/createEventsPanel_2_sendEventButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|bottom"
+            android:layout_marginLeft="191dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/eventspanel_sendbutton"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            />
+
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/createEventsPanel_2_pageNumberImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pagenumberimage_2"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="108dp" />
+
+</FrameLayout>

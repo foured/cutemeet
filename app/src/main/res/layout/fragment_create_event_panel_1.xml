@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".createEventPanel_1"
+    android:background="@color/mainscreen_bg">
+
+    <TextView
+        android:id="@+id/createEventsPanel_1_pageTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="0dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="События"
+        android:textColor="@color/textColor"
+        android:textSize="40sp"
+        android:typeface="sans" />
+
+    <ImageView
+        android:id="@+id/createEventsPanel_1_topDevidor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="55dp"
+        android:src="@drawable/topdevidor" />
+
+    <TextView
+        android:id="@+id/createEventsPanel_1_pageSubtitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="55dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Создание"
+        android:textColor="@color/textColor"
+        android:textSize="40sp"
+        android:typeface="sans" />
+
+    <FrameLayout
+        android:layout_width="371dp"
+        android:layout_height="570dp"
+        android:background="@drawable/eventspanel_bg"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="126dp">
+
+        <TextView
+            android:id="@+id/createEventsPanel_1_eventNameText"
+            android:layout_width="314dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Название мероприятия"
+            android:textColor="@color/textColor"
+            android:textSize="24sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="56dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/createEventsPanel_1_eventNameEditText"
+                android:layout_width="314dp"
+                android:layout_height="48dp"
+                android:text="delete me"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/textColor"
+                android:background="@drawable/loginsignup_textinputbg"
+                android:padding="0dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/createEventsPanel_1_eventNameEditText_correctImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/wronglineimage"
+            android:layout_marginTop="68dp"
+            android:layout_marginLeft="300dp"/>
+
+        <TextView
+            android:id="@+id/createEventsPanel_1_senderNameText"
+            android:layout_width="314dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="116dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Ваше имя"
+            android:textColor="@color/textColor"
+            android:textSize="24sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="149dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/createEventsPanel_1_senderNameEditText"
+                android:layout_width="314dp"
+                android:layout_height="48dp"
+                android:text="delete me"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/textColor"
+                android:background="@drawable/loginsignup_textinputbg"
+                android:padding="0dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/createEventsPanel_1_senderNameEditText_correctImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/wronglineimage"
+            android:layout_marginTop="161dp"
+            android:layout_marginLeft="300dp"/>
+
+        <TextView
+            android:id="@+id/createEventsPanel_1_senderContactText"
+            android:layout_width="314dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="210dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Ваш контакт"
+            android:textColor="@color/textColor"
+            android:textSize="24sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="242dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/createEventsPanel_1_senderContactEditText"
+                android:layout_width="314dp"
+                android:layout_height="48dp"
+                android:text="delete me"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/textColor"
+                android:background="@drawable/loginsignup_textinputbg"
+                android:padding="0dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/createEventsPanel_1_senderContactEditText_correctImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/wronglineimage"
+            android:layout_marginTop="254dp"
+            android:layout_marginLeft="300dp"/>
+
+        <TextView
+            android:id="@+id/createEventsPanel_1_eventDateText"
+            android:layout_width="314dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="304dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Дата мероприятия"
+            android:textColor="@color/textColor"
+            android:textSize="24sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="336dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/createEventsPanel_1_eventDateEditText"
+                android:layout_width="314dp"
+                android:layout_height="48dp"
+                android:text="delete me"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/textColor"
+                android:background="@drawable/loginsignup_textinputbg"
+                android:padding="0dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/createEventsPanel_1_eventDateEditText_correctImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/wronglineimage"
+            android:layout_marginTop="348dp"
+            android:layout_marginLeft="300dp"/>
+
+        <TextView
+            android:id="@+id/createEventsPanel_1_eventLocationText"
+            android:layout_width="314dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="400dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Место мероприятия"
+            android:textColor="@color/textColor"
+            android:textSize="24sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="430dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/createEventsPanel_1_eventLocationEditText"
+                android:layout_width="314dp"
+                android:layout_height="48dp"
+                android:text="delete me"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/textColor"
+                android:background="@drawable/loginsignup_textinputbg"
+                android:padding="0dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/createEventsPanel_1_eventLocationEditText_correctImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/wronglineimage"
+            android:layout_marginTop="442dp"
+            android:layout_marginLeft="300dp"/>
+
+        <ImageButton
+            android:id="@+id/createEventsPanel_1_backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|bottom"
+            android:layout_marginLeft="11dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/loginsignup_backbutton"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            />
+
+        <ImageButton
+            android:id="@+id/createEventsPanel_1_nextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|bottom"
+            android:layout_marginLeft="191dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/loginsignup_nextbutton"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            />
+
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/createEventsPanel_1_pageNumberImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pagenumberimage_1"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="108dp" />
+
+</FrameLayout>
