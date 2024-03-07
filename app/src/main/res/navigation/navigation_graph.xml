@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/events">
+    app:startDestination="@id/welcomeScreen">
     <fragment
         android:id="@+id/messanger"
         android:name="com.foured.cutemeet.Messanger"
@@ -137,7 +137,13 @@
         android:id="@+id/registrationScreen_4"
         android:name="com.foured.cutemeet.RegistrationScreen_4"
         android:label="fragment_registration_screen_4"
-        tools:layout="@layout/fragment_registration_screen_4" />
+        tools:layout="@layout/fragment_registration_screen_4" >
+        <action
+            android:id="@+id/action_registrationScreen_4_to_news"
+            app:destination="@id/news"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
     <fragment
         android:id="@+id/logInScreen"
         android:name="com.foured.cutemeet.LogInScreen"
@@ -230,7 +236,7 @@
         tools:layout="@layout/fragment_password_recovery_screen_4" />
     <fragment
         android:id="@+id/createEventPanel_1"
-        android:name="com.foured.cutemeet.createEventPanel_1"
+        android:name="com.foured.cutemeet.CreateEventPanel_1"
         android:label="fragment_create_event_panel_1"
         tools:layout="@layout/fragment_create_event_panel_1" >
         <action

@@ -11,7 +11,7 @@ public class EventData implements Serializable {
     public String senderContact;
     public String date;
     public String location;
-    public List<String> tags;
+    public String tags;
 
     public String toJsonString() {
         StringBuilder jsonBuilder = new StringBuilder();
@@ -22,17 +22,18 @@ public class EventData implements Serializable {
         jsonBuilder.append("\"senderContact\":\"").append(senderContact).append("\",");
         jsonBuilder.append("\"date\":\"").append(date).append("\",");
         jsonBuilder.append("\"location\":\"").append(location).append("\",");
+        jsonBuilder.append("\"tags\":\"").append("").append("\"");
 
-        jsonBuilder.append("\"tags\":[");
-        if (tags != null && !tags.isEmpty()) {
-            for (int i = 0; i < tags.size(); i++) {
-                jsonBuilder.append("\"").append(tags.get(i)).append("\"");
-                if (i < tags.size() - 1) {
-                    jsonBuilder.append(",");
-                }
-            }
-        }
-        jsonBuilder.append("]");
+//        jsonBuilder.append("\"tags\":[");
+//        if (tags != null && !tags.isEmpty()) {
+//            for (int i = 0; i < tags.size(); i++) {
+//                jsonBuilder.append("\"").append(tags.get(i)).append("\"");
+//                if (i < tags.size() - 1) {
+//                    jsonBuilder.append(",");
+//                }
+//            }
+//        }
+//        jsonBuilder.append("]");
 
         jsonBuilder.append("}");
 

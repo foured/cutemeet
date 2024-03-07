@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -21,6 +22,10 @@ import android.widget.Toast;
 import com.foured.cutemeet.algorithms.RegistrationFieldsChecker;
 import com.foured.cutemeet.config.ConstStrings;
 import com.foured.cutemeet.models.UserAccountData;
+import com.foured.cutemeet.net.HTTP;
+import com.foured.cutemeet.net.SpringSecurityClient;
+
+import java.util.concurrent.CompletableFuture;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -169,15 +174,13 @@ public class RegistrationScreen_4 extends Fragment {
                     uad.password = String.valueOf(pET.getText());
                     uad.userName = String.valueOf(unET.getText());
 
-                    //SharedPreferences sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-                    //SharedPreferences.Editor editor = sharedPreferences.edit();
+                    String url = ConstStrings.serverAddress + "/operations/new_user";
+                    CompletableFuture<String> result = SpringSecurityClient.post_nc_async(url, uad.toJsonString());
 
-                    //System.out.println(uad.name);
-                    //System.out.println(uad.surname);
-                    //System.out.println(uad.middleName);
-                    //System.out.println(uad.phoneNumber);
-                    //System.out.println(uad.email);
-                    //System.out.println(uad.password);
+                    result.thenAccept(res -> {
+                        System.out.println("Response from server: " + result);
+                        Navigation.findNavController(view).navigate(R.id.action_registrationScreen_4_to_news);
+                    });
                 }
                 else{
                     Toast.makeText(view.getContext(), ConstStrings.wrongRegistrationLine, Toast.LENGTH_LONG).show();

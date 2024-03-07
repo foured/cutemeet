@@ -1,12 +1,6 @@
 package com.foured.cutemeet;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -16,9 +10,23 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
+
 import com.foured.cutemeet.algorithms.RegistrationFieldsChecker;
 import com.foured.cutemeet.config.ConstStrings;
 import com.foured.cutemeet.models.UserAccountData;
+import com.foured.cutemeet.net.SpringSecurityClient;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -87,8 +95,7 @@ public class RegistrationScreen_2 extends Fragment {
         view.findViewById(R.id.registrationPanel_2_backButton)
                 .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_registrationScreen_2_to_registrationScreen_1));
         //Navigation.createNavigateOnClickListener(R.id.action_registrationScreen_2_to_registrationScreen_3
-        view.findViewById(R.id.registrationPanel_2_nextButton)
-                .setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.registrationPanel_2_nextButton).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         EditText pnET = view.findViewById(R.id.registrationPanel_2_phoneNumberEditText);
@@ -99,7 +106,16 @@ public class RegistrationScreen_2 extends Fragment {
                             uad.phoneNumber = String.valueOf(pnET.getText());
                             uad.email = String.valueOf(eET.getText());
                             bundle.putSerializable("user_account_data", uad);
-                            Navigation.findNavController(view).navigate(R.id.action_registrationScreen_2_to_registrationScreen_3, bundle);
+
+                            String url = ConstStrings.serverAddress + "/operations/send_mail";
+                            List<SpringSecurityClient.Pair> params = new ArrayList<>();
+                            params.add(new SpringSecurityClient.Pair("recipient", uad.email));
+                            CompletableFuture<String> response = SpringSecurityClient.get_nc_async(url, params);
+                            response.thenAccept(res -> {
+                                System.out.println(res);
+                                Navigation.findNavController(view).navigate(R.id.action_registrationScreen_2_to_registrationScreen_3, bundle);
+                            });
+
                         }
                         else{
                             Toast.makeText(view.getContext(), ConstStrings.wrongRegistrationLine, Toast.LENGTH_LONG).show();

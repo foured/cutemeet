@@ -89,11 +89,10 @@ public class CreateEventPanel_2 extends Fragment {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                eventData.tags = StringAlgorithms.parseStringForTags(String.valueOf(tET.getText()));
-                HTTP.postHttpRequestAsync(ConstStrings.serverAddress + "/a/new", eventData.toJsonString(), new HTTP.HttpResponseListener() {
+                //eventData.tags = StringAlgorithms.parseStringForTags(String.valueOf(tET.getText()));
+                HTTP.postHttpRequestAsync(ConstStrings.serverAddress + "/activities/save", eventData.toJsonString(), new HTTP.HttpResponseListener() {
                     @Override
                     public void onHttpResponse(String result) {
-                        // Обработка ответа от сервера
                         System.out.println("Response from server: " + result);
                     }
                 });

@@ -38,7 +38,7 @@
         android:fontFamily="sans-serif-medium"
         android:text="Имя отправителя"
         android:textColor="@color/textColor"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/eventPrev_eventLocationText"
@@ -49,7 +49,7 @@
         android:fontFamily="sans-serif-medium"
         android:text="Место"
         android:textColor="@color/textColor"
-        android:textSize="24sp" />
+        android:textSize="20sp" />
 
 
 </FrameLayout>

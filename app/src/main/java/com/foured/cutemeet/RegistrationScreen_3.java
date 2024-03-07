@@ -11,8 +11,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.foured.cutemeet.config.ConstStrings;
 import com.foured.cutemeet.models.UserAccountData;
+import com.foured.cutemeet.net.SpringSecurityClient;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -73,13 +83,33 @@ public class RegistrationScreen_3 extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ((EditText) view.findViewById(R.id.registrationPanel_3_codeEditText)).getText().clear();
+        EditText cET = ((EditText) view.findViewById(R.id.registrationPanel_3_codeEditText));
+        cET.getText().clear();
 
         view.findViewById(R.id.registrationPanel_3_backButton)
                 .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_registrationScreen_3_to_registrationScreen_2));
         Bundle bundle = new Bundle();
         bundle.putSerializable("user_account_data", uad);
         view.findViewById(R.id.registrationPanel_3_nextButton)
-                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_registrationScreen_3_to_registrationScreen_4, bundle));
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        List<SpringSecurityClient.Pair> params = new ArrayList<>();
+                        params.add(new SpringSecurityClient.Pair("email", uad.email));
+                        params.add(new SpringSecurityClient.Pair("code", cET.getText().toString()));
+                        String url = ConstStrings.serverAddress + "/operations/check_code";
+                        CompletableFuture<String> result = SpringSecurityClient.get_nc_async(url, params);
+                        result.thenAccept(res -> {
+                            boolean r = Boolean.parseBoolean(res);
+
+                            if(r){
+                                Navigation.findNavController(view).navigate(R.id.action_registrationScreen_3_to_registrationScreen_4, bundle);
+                            }
+                            else{
+                                Toast.makeText(view.getContext(), ConstStrings.wrongCode, Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                });
     }
 }

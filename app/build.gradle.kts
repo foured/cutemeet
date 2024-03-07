@@ -5,7 +5,7 @@ plugins {
 android {
     namespace = "com.foured.cutemeet"
     compileSdk = 34
-
+    useLibrary("org.apache.http.legacy")
     defaultConfig {
         applicationId = "com.foured.cutemeet"
         minSdk = 27
@@ -40,4 +40,5 @@ dependencies {
     implementation("androidx.navigation:navigation-ui:$nav_version")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("com.google.code.gson:gson:2.8.9")
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
 }

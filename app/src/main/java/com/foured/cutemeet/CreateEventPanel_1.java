@@ -22,10 +22,10 @@ import com.foured.cutemeet.models.EventData;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link createEventPanel_1#newInstance} factory method to
+ * Use the {@link CreateEventPanel_1#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class createEventPanel_1 extends Fragment {
+public class CreateEventPanel_1 extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,7 +36,7 @@ public class createEventPanel_1 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public createEventPanel_1() {
+    public CreateEventPanel_1() {
         // Required empty public constructor
     }
 
@@ -49,8 +49,8 @@ public class createEventPanel_1 extends Fragment {
      * @return A new instance of fragment createEventPanel_1.
      */
     // TODO: Rename and change types and number of parameters
-    public static createEventPanel_1 newInstance(String param1, String param2) {
-        createEventPanel_1 fragment = new createEventPanel_1();
+    public static CreateEventPanel_1 newInstance(String param1, String param2) {
+        CreateEventPanel_1 fragment = new CreateEventPanel_1();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

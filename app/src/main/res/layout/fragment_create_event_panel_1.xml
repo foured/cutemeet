@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".createEventPanel_1"
+    tools:context=".CreateEventPanel_1"
     android:background="@color/mainscreen_bg">
 
     <TextView

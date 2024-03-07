@@ -101,10 +101,9 @@ public class Events extends Fragment {
         eventsList.setLayoutManager(layoutManager);
         eventsList.setHasFixedSize(true);
 
-        HTTP.getHttpResponseAsync(ConstStrings.serverAddress + "/a/all", new HTTP.HttpResponseListener() {
+        HTTP.getHttpResponseAsync(ConstStrings.serverAddress + "/activities/all", new HTTP.HttpResponseListener() {
             @Override
             public void onHttpResponse(String result) {
-                // Обработка результата после выполнения GET-запроса в фоновом потоке
                 List<EventData> eventList = parseJsonArray(result, EventData.class);
                 System.out.println(result);
                 eventsAdapter = new EventsAdapter((ArrayList<EventData>) eventList);

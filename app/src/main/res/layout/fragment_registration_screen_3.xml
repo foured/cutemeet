@@ -50,7 +50,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="24dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Введите код из сообщения"
+            android:text="Введите код из письма"
             android:textColor="@color/textColor"
             android:textSize="24sp" />
 
