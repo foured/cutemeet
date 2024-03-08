@@ -179,7 +179,7 @@ public class RegistrationScreen_4 extends Fragment {
 
                     result.thenAccept(res -> {
                         System.out.println("Response from server: " + result);
-                        Navigation.findNavController(view).navigate(R.id.action_registrationScreen_4_to_news);
+                        Navigation.findNavController(view).navigate(R.id.action_registrationScreen_4_to_logInScreen);
                     });
                 }
                 else{

@@ -7,6 +7,18 @@
     android:background="@color/mainscreen_bg">
 
     <TextView
+        android:id="@+id/logInPanel_logText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="delete me"
+        android:textColor="@android:color/holo_red_dark"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="24dp"
+        android:gravity="center_horizontal"/>
+
+
+
+    <TextView
         android:id="@+id/logInPanel_loginText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,6 +76,7 @@
                 android:text="delete me"
                 android:fontFamily="sans-serif-medium"
                 android:textColor="@color/textColor"
+                android:inputType="textPassword"
                 android:background="@drawable/loginsignup_textinputbg"
                 android:padding="0dp"/>
         </com.google.android.material.textfield.TextInputLayout>

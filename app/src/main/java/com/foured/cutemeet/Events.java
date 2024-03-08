@@ -20,6 +20,7 @@ import com.foured.cutemeet.adapters.EventsAdapter;
 import com.foured.cutemeet.config.ConstStrings;
 import com.foured.cutemeet.models.EventData;
 import com.foured.cutemeet.net.HTTP;
+import com.foured.cutemeet.net.SpringSecurityClient;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -27,6 +28,7 @@ import com.google.gson.JsonParser;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -101,19 +103,36 @@ public class Events extends Fragment {
         eventsList.setLayoutManager(layoutManager);
         eventsList.setHasFixedSize(true);
 
-        HTTP.getHttpResponseAsync(ConstStrings.serverAddress + "/activities/all", new HTTP.HttpResponseListener() {
-            @Override
-            public void onHttpResponse(String result) {
-                List<EventData> eventList = parseJsonArray(result, EventData.class);
-                System.out.println(result);
+        SpringSecurityClient client = SpringSecurityClient.createFromCookiesData(SpringSecurityClient.loadCookiesDataFromSharedPreferences(getContext()));
+        CompletableFuture<String> action = client.get_async(ConstStrings.serverAddress + "/activities/all");
+
+        action.thenAcceptAsync(result -> {
+            List<EventData> eventList = parseJsonArray(result, EventData.class);
+            System.out.println(result);
+
+            getActivity().runOnUiThread(() -> {
                 eventsAdapter = new EventsAdapter((ArrayList<EventData>) eventList);
                 DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(eventsList.getContext(),
                         layoutManager.getOrientation());
                 eventsList.addItemDecoration(dividerItemDecoration);
 
                 eventsList.setAdapter(eventsAdapter);
-            }
+            });
         });
+
+//        HTTP.getHttpResponseAsync(ConstStrings.serverAddress + "/activities/all", new HTTP.HttpResponseListener() {
+//            @Override
+//            public void onHttpResponse(String result) {
+//                List<EventData> eventList = parseJsonArray(result, EventData.class);
+//                System.out.println(result);
+//                eventsAdapter = new EventsAdapter((ArrayList<EventData>) eventList);
+//                DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(eventsList.getContext(),
+//                        layoutManager.getOrientation());
+//                eventsList.addItemDecoration(dividerItemDecoration);
+//
+//                eventsList.setAdapter(eventsAdapter);
+//            }
+//        });
     }
 
     private static <T> List<T> parseJsonArray(String jsonArrayString, Class<T> classOfT) {

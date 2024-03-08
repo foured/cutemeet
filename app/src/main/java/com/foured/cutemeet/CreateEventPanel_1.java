@@ -210,8 +210,6 @@ public class CreateEventPanel_1 extends Fragment {
                 {
                     EventData eventData = new EventData();
                     eventData.name = String.valueOf(enET.getText());
-                    eventData.senderName = String.valueOf(snET.getText());
-                    eventData.senderContact = String.valueOf(scET.getText());
                     eventData.date = String.valueOf(edET.getText());
                     eventData.location = String.valueOf(elET.getText());
 

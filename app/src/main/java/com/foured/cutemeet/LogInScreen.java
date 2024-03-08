@@ -7,10 +7,23 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
+import com.foured.cutemeet.config.ConstStrings;
+import com.foured.cutemeet.net.AuthenticationException;
+import com.foured.cutemeet.net.SpringSecurityClient;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,11 +82,54 @@ public class LogInScreen extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ((EditText) view.findViewById(R.id.logInPanel_userDataEditText)).getText().clear();
-        ((EditText) view.findViewById(R.id.logInPanel_passwordEditText)).getText().clear();
+        EditText unET = view.findViewById(R.id.logInPanel_userDataEditText);
+        unET.getText().clear();
+        EditText pET = view.findViewById(R.id.logInPanel_passwordEditText);
+        pET.getText().clear();
+
+        TextView logTW = view.findViewById(R.id.logInPanel_logText);
+        logTW.setText("");
+
         view.findViewById(R.id.logInPanel_forgotPasswordButton)
                 .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_logInScreen_to_passwordRecoveryScreen_1));
         view.findViewById(R.id.logInPanel_registerButton)
                 .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_logInScreen_to_registrationScreen_1));
+
+        ImageButton loginButton = view.findViewById(R.id.logInPanel_loginButton);
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = String.valueOf(unET.getText());
+                String password = String.valueOf(pET.getText());
+
+                List<SpringSecurityClient.Pair> params = new ArrayList<>();
+                params.add(new SpringSecurityClient.Pair("username", username));
+                params.add(new SpringSecurityClient.Pair("password", password));
+                String url = ConstStrings.serverAddress + "/operations/check_password";
+                CompletableFuture<String> result1 = SpringSecurityClient.get_nc_async(url, params);
+
+                result1.thenAcceptAsync(res -> {
+                    Log.i("LOGIN", res);
+                    String url2 = ConstStrings.serverAddress + "/login";
+                    try {
+                        SpringSecurityClient client = SpringSecurityClient.login_ns(url2, username, password);
+                        client.saveCookiesToSharedPreferences(getContext());
+
+                        Navigation.findNavController(view).navigate(R.id.action_logInScreen_to_news);
+                    }
+                    catch (AuthenticationException ae){
+                        Log.w("LOGIN", "Login error: \n" + ae);
+
+                        getActivity().runOnUiThread(() -> {
+                            ((TextView) view.findViewById(R.id.logInPanel_logText)).setText("Неправильный логин или пароль.");
+                        });
+
+                    }catch (IOException ioe){
+                        Log.w("LOGIN", "HTTP error: \n" + ioe);
+                    }
+                });
+            }
+        });
     }
 }

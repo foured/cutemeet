@@ -139,8 +139,8 @@
         android:label="fragment_registration_screen_4"
         tools:layout="@layout/fragment_registration_screen_4" >
         <action
-            android:id="@+id/action_registrationScreen_4_to_news"
-            app:destination="@id/news"
+            android:id="@+id/action_registrationScreen_4_to_logInScreen"
+            app:destination="@id/logInScreen"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
     </fragment>
@@ -157,6 +157,11 @@
         <action
             android:id="@+id/action_logInScreen_to_registrationScreen_1"
             app:destination="@id/registrationScreen_1"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_logInScreen_to_news"
+            app:destination="@id/news"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
     </fragment>

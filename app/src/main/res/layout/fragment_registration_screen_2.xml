@@ -58,7 +58,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="24dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Номер телефона*"
+            android:text="Номер телефона* (+7...)"
             android:textColor="@color/textColor"
             android:textSize="24sp" />
 
