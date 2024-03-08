@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -108,7 +109,7 @@ public class Events extends Fragment {
 
         action.thenAcceptAsync(result -> {
             List<EventData> eventList = parseJsonArray(result, EventData.class);
-            System.out.println(result);
+            Log.i("Events", result);
 
             getActivity().runOnUiThread(() -> {
                 eventsAdapter = new EventsAdapter((ArrayList<EventData>) eventList);
@@ -119,20 +120,6 @@ public class Events extends Fragment {
                 eventsList.setAdapter(eventsAdapter);
             });
         });
-
-//        HTTP.getHttpResponseAsync(ConstStrings.serverAddress + "/activities/all", new HTTP.HttpResponseListener() {
-//            @Override
-//            public void onHttpResponse(String result) {
-//                List<EventData> eventList = parseJsonArray(result, EventData.class);
-//                System.out.println(result);
-//                eventsAdapter = new EventsAdapter((ArrayList<EventData>) eventList);
-//                DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(eventsList.getContext(),
-//                        layoutManager.getOrientation());
-//                eventsList.addItemDecoration(dividerItemDecoration);
-//
-//                eventsList.setAdapter(eventsAdapter);
-//            }
-//        });
     }
 
     private static <T> List<T> parseJsonArray(String jsonArrayString, Class<T> classOfT) {

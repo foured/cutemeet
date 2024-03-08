@@ -245,15 +245,15 @@
         android:label="fragment_create_event_panel_1"
         tools:layout="@layout/fragment_create_event_panel_1" >
         <action
-            android:id="@+id/action_createEventPanel_1_to_createEventPanel_2"
-            app:destination="@id/createEventPanel_2"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left" />
-        <action
             android:id="@+id/action_createEventPanel_1_to_events"
             app:destination="@id/events"
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_createEventPanel_1_to_createEventPanel_2"
+            app:destination="@id/createEventPanel_2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/createEventPanel_2"
@@ -261,14 +261,28 @@
         android:label="fragment_create_event_panel_2"
         tools:layout="@layout/fragment_create_event_panel_2" >
         <action
+            android:id="@+id/action_createEventPanel_2_to_createEventPanel_3"
+            app:destination="@id/createEventPanel_3"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
             android:id="@+id/action_createEventPanel_2_to_createEventPanel_1"
             app:destination="@id/createEventPanel_1"
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/createEventPanel_3"
+        android:name="com.foured.cutemeet.CreateEventPanel_3"
+        android:label="fragment_create_event_panel_3"
+        tools:layout="@layout/fragment_create_event_panel_3" >
         <action
-            android:id="@+id/action_createEventPanel_2_to_events"
-            app:destination="@id/events"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left" />
+            android:id="@+id/action_createEventPanel_3_to_createEventPanel_2"
+            app:destination="@id/createEventPanel_2"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_createEventPanel_3_to_events"
+            app:destination="@id/events" />
     </fragment>
 </navigation>

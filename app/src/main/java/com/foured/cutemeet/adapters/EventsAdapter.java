@@ -22,7 +22,6 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
 
     public EventsAdapter(ArrayList<EventData> newEventsData){
         eventsDataList = newEventsData;
-        System.out.println(eventsDataList.size());
     }
 
     @NonNull

@@ -7,7 +7,7 @@
     android:background="@color/mainscreen_bg">
 
     <TextView
-        android:id="@+id/createEventsPanel_2_pageTitleText"
+        android:id="@+id/createEventsPanel_3_pageTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="26dp"
@@ -19,7 +19,7 @@
         android:typeface="sans" />
 
     <ImageView
-        android:id="@+id/createEventsPanel_2_topDevidor"
+        android:id="@+id/createEventsPanel_3_topDevidor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|top"
@@ -27,13 +27,13 @@
         android:src="@drawable/topdevidor" />
 
     <TextView
-        android:id="@+id/createEventsPanel_2_pageSubtitleText"
+        android:id="@+id/createEventsPanel_3_pageSubtitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="55dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Описание"
+        android:text="Создание"
         android:textColor="@color/textColor"
         android:textSize="40sp"
         android:typeface="sans" />
@@ -46,15 +46,27 @@
         android:layout_marginTop="126dp">
 
         <TextView
-            android:id="@+id/createEventsPanel_2_descriptionText"
+            android:id="@+id/createEventsPanel_3_tagsText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="29dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="35dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Попробуйте максимально подробно описать мероприятие:"
+            android:text="Теги: "
             android:textColor="@color/textColor"
-            android:textSize="20sp"
+            android:textSize="24sp"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/createEventsPanel_3_tagsExamplesText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="42dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="(Спорт, прогулки)"
+            android:textColor="@color/textColor"
+            android:textSize="15sp"
             android:typeface="sans" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -64,7 +76,7 @@
             android:layout_marginTop="76dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/createEventsPanel_2_descriptionEditText"
+                android:id="@+id/createEventsPanel_3_tagsEditText"
                 android:layout_width="314dp"
                 android:layout_height="384dp"
                 android:gravity="top|left"
@@ -77,7 +89,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <ImageButton
-            android:id="@+id/createEventsPanel_2_backButton"
+            android:id="@+id/createEventsPanel_3_backButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|bottom"
@@ -89,13 +101,13 @@
             />
 
         <ImageButton
-            android:id="@+id/createEventsPanel_2_nextButton"
+            android:id="@+id/createEventsPanel_3_sendEventButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_gravity="left|bottom"
             android:layout_marginLeft="191dp"
             android:layout_marginBottom="20dp"
-            android:src="@drawable/loginsignup_nextbutton"
+            android:src="@drawable/eventspanel_sendbutton"
             android:background="@android:color/transparent"
             android:contentDescription="@string/NULL"
             />
@@ -103,10 +115,10 @@
     </FrameLayout>
 
     <ImageView
-        android:id="@+id/createEventsPanel_2_pageNumberImage"
+        android:id="@+id/createEventsPanel_3_pageNumberImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/pagenumberimage_2"
+        android:src="@drawable/pagenumberimage_3"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="108dp" />
 

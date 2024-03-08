@@ -10,6 +10,7 @@ public class EventData implements Serializable {
     public String senderName;
     public String date;
     public String location;
+    public String description;
     public String tags;
 
     public String toJsonString() {
@@ -20,7 +21,8 @@ public class EventData implements Serializable {
         jsonBuilder.append("\"senderName\":\"").append("").append("\",");
         jsonBuilder.append("\"date\":\"").append(date).append("\",");
         jsonBuilder.append("\"location\":\"").append(location).append("\",");
-        jsonBuilder.append("\"tags\":\"").append("").append("\"");
+        jsonBuilder.append("\"description\":\"").append(description).append("\",");
+        jsonBuilder.append("\"tags\":\"").append(tags).append("\"");
 
         jsonBuilder.append("}");
 

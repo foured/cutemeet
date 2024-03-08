@@ -40,8 +40,8 @@
 
     <FrameLayout
         android:layout_width="371dp"
-        android:layout_height="570dp"
-        android:background="@drawable/eventspanel_bg"
+        android:layout_height="wrap_content"
+        android:background="@drawable/createevent_bg"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="126dp">
 
@@ -82,83 +82,11 @@
             android:layout_marginLeft="300dp"/>
 
         <TextView
-            android:id="@+id/createEventsPanel_1_senderNameText"
-            android:layout_width="314dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="116dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="Ваше имя"
-            android:textColor="@color/textColor"
-            android:textSize="24sp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="149dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/createEventsPanel_1_senderNameEditText"
-                android:layout_width="314dp"
-                android:layout_height="48dp"
-                android:text="delete me"
-                android:fontFamily="sans-serif-medium"
-                android:textColor="@color/textColor"
-                android:background="@drawable/loginsignup_textinputbg"
-                android:padding="0dp"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <ImageView
-            android:id="@+id/createEventsPanel_1_senderNameEditText_correctImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/wronglineimage"
-            android:layout_marginTop="161dp"
-            android:layout_marginLeft="300dp"/>
-
-        <TextView
-            android:id="@+id/createEventsPanel_1_senderContactText"
-            android:layout_width="314dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="210dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="Ваш контакт"
-            android:textColor="@color/textColor"
-            android:textSize="24sp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="242dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/createEventsPanel_1_senderContactEditText"
-                android:layout_width="314dp"
-                android:layout_height="48dp"
-                android:text="delete me"
-                android:fontFamily="sans-serif-medium"
-                android:textColor="@color/textColor"
-                android:background="@drawable/loginsignup_textinputbg"
-                android:padding="0dp"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <ImageView
-            android:id="@+id/createEventsPanel_1_senderContactEditText_correctImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/wronglineimage"
-            android:layout_marginTop="254dp"
-            android:layout_marginLeft="300dp"/>
-
-        <TextView
             android:id="@+id/createEventsPanel_1_eventDateText"
             android:layout_width="314dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="304dp"
+            android:layout_marginTop="116dp"
             android:fontFamily="sans-serif-medium"
             android:text="Дата мероприятия"
             android:textColor="@color/textColor"
@@ -168,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="336dp">
+            android:layout_marginTop="149dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/createEventsPanel_1_eventDateEditText"
@@ -186,7 +114,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/wronglineimage"
-            android:layout_marginTop="348dp"
+            android:layout_marginTop="161dp"
             android:layout_marginLeft="300dp"/>
 
         <TextView
@@ -194,7 +122,7 @@
             android:layout_width="314dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="400dp"
+            android:layout_marginTop="210dp"
             android:fontFamily="sans-serif-medium"
             android:text="Место мероприятия"
             android:textColor="@color/textColor"
@@ -204,17 +132,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="430dp">
+            android:layout_marginTop="242dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/createEventsPanel_1_eventLocationEditText"
                 android:layout_width="314dp"
                 android:layout_height="48dp"
-                android:text="delete me"
-                android:fontFamily="sans-serif-medium"
-                android:textColor="@color/textColor"
                 android:background="@drawable/loginsignup_textinputbg"
-                android:padding="0dp"/>
+                android:fontFamily="sans-serif-medium"
+                android:padding="0dp"
+                android:text="delete me"
+                android:textColor="@color/textColor" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
@@ -222,7 +150,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/wronglineimage"
-            android:layout_marginTop="442dp"
+            android:layout_marginTop="254dp"
             android:layout_marginLeft="300dp"/>
 
         <ImageButton

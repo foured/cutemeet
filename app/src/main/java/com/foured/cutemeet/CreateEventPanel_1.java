@@ -82,14 +82,10 @@ public class CreateEventPanel_1 extends Fragment {
         ImageButton backButton = view.findViewById(R.id.createEventsPanel_1_backButton);
 
         EditText enET = view.findViewById(R.id.createEventsPanel_1_eventNameEditText);
-        EditText snET = view.findViewById(R.id.createEventsPanel_1_senderNameEditText);
-        EditText scET = view.findViewById(R.id.createEventsPanel_1_senderContactEditText);
         EditText edET = view.findViewById(R.id.createEventsPanel_1_eventDateEditText);
         EditText elET = view.findViewById(R.id.createEventsPanel_1_eventLocationEditText);
 
         enET.getText().clear();
-        snET.getText().clear();
-        scET.getText().clear();
         edET.getText().clear();
         elET.getText().clear();
 
@@ -114,48 +110,7 @@ public class CreateEventPanel_1 extends Fragment {
 
             }
         });
-        snET.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.length() >= 1){
-                    ((ImageView) view.findViewById(R.id.createEventsPanel_1_senderNameEditText_correctImage)).setImageResource(R.drawable.correctlineimage);
-                }
-                else{
-                    ((ImageView) view.findViewById(R.id.createEventsPanel_1_senderNameEditText_correctImage)).setImageResource(R.drawable.wronglineimage);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-        scET.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if(s.length() >= 1){
-                    ((ImageView) view.findViewById(R.id.createEventsPanel_1_senderContactEditText_correctImage)).setImageResource(R.drawable.correctlineimage);
-                }
-                else{
-                    ((ImageView) view.findViewById(R.id.createEventsPanel_1_senderContactEditText_correctImage)).setImageResource(R.drawable.wronglineimage);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
         edET.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -203,8 +158,6 @@ public class CreateEventPanel_1 extends Fragment {
             @Override
             public void onClick(View v) {
                 if(enET.getText().length() >= 1
-                && snET.getText().length() >= 1
-                && scET.getText().length() >= 1
                 && edET.getText().length() >= 1
                 && elET.getText().length() >= 1)
                 {

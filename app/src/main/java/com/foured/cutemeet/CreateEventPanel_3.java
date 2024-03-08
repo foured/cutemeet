@@ -7,23 +7,26 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.foured.cutemeet.algorithms.StringAlgorithms;
 import com.foured.cutemeet.config.ConstStrings;
 import com.foured.cutemeet.models.EventData;
 import com.foured.cutemeet.net.HTTP;
+import com.foured.cutemeet.net.SpringSecurityClient;
+
+import java.util.concurrent.CompletableFuture;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link CreateEventPanel_2#newInstance} factory method to
+ * Use the {@link CreateEventPanel_3#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class CreateEventPanel_2 extends Fragment {
+public class CreateEventPanel_3 extends Fragment {
     private EventData eventData;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -35,7 +38,7 @@ public class CreateEventPanel_2 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public CreateEventPanel_2() {
+    public CreateEventPanel_3() {
         // Required empty public constructor
     }
 
@@ -45,11 +48,11 @@ public class CreateEventPanel_2 extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment CreateEventPanel_2.
+     * @return A new instance of fragment CreateEventPanel_3.
      */
     // TODO: Rename and change types and number of parameters
-    public static CreateEventPanel_2 newInstance(String param1, String param2) {
-        CreateEventPanel_2 fragment = new CreateEventPanel_2();
+    public static CreateEventPanel_3 newInstance(String param1, String param2) {
+        CreateEventPanel_3 fragment = new CreateEventPanel_3();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -71,27 +74,34 @@ public class CreateEventPanel_2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_event_panel_2, container, false);
+        return inflater.inflate(R.layout.fragment_create_event_panel_3, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        SpringSecurityClient client = SpringSecurityClient.createFromCookiesData(SpringSecurityClient.loadCookiesDataFromSharedPreferences(getContext()));
 
-        ImageButton backButton = view.findViewById(R.id.createEventsPanel_2_backButton);
-        ImageButton sendButton = view.findViewById(R.id.createEventsPanel_2_nextButton);
+        ImageButton backButton = view.findViewById(R.id.createEventsPanel_3_backButton);
+        ImageButton sendButton = view.findViewById(R.id.createEventsPanel_3_sendEventButton);
 
-        EditText dET = view.findViewById(R.id.createEventsPanel_2_descriptionEditText);
-        dET.getText().clear();
+        EditText tET = view.findViewById(R.id.createEventsPanel_3_tagsEditText);
+        tET.getText().clear();
 
         backButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_createEventPanel_2_to_createEventPanel_1));
+
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                eventData.description = String.valueOf(dET.getText());
-                bundle.putSerializable("event_data", eventData);
-                Navigation.findNavController(view).navigate(R.id.action_createEventPanel_2_to_createEventPanel_3, bundle);
+                eventData.tags = String.valueOf(tET.getText());
+
+                String url = ConstStrings.serverAddress + "/activities/save";
+                CompletableFuture<String> future = client.post_async(url, eventData.toJsonString());
+                future.thenAcceptAsync(result -> {
+                    Log.i("Event sender", "Response from server: " + result);
+
+                    Navigation.findNavController(view).navigate(R.id.action_createEventPanel_3_to_events);
+                });
             }
         });
     }
