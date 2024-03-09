@@ -98,15 +98,18 @@ public class WelcomeScreen extends Fragment {
 
         loadingAVD.start();
 
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences(ConstStrings.sharedPreferencesUserDataPath, Context.MODE_PRIVATE);
-        String username = sharedPreferences.getString(ConstStrings.sharedPreferences_usernameKey, null);
-        String password = sharedPreferences.getString(ConstStrings.sharedPreferences_passwordKey, null);
+        String url1 = ConstStrings.serverAddress + "/operations/ping";
+        CompletableFuture<String> future = SpringSecurityClient.get_nc_async(url1);
 
-        if(username != null && password != null){
-            CompletableFuture<Void> asyncProcessing = CompletableFuture.runAsync(() -> {
+        future.thenAcceptAsync(result1 -> {
+            SharedPreferences sharedPreferences = getContext().getSharedPreferences(ConstStrings.sharedPreferencesUserDataPath, Context.MODE_PRIVATE);
+            String username = sharedPreferences.getString(ConstStrings.sharedPreferences_usernameKey, null);
+            String password = sharedPreferences.getString(ConstStrings.sharedPreferences_passwordKey, null);
+
+            if(username != null && password != null){
                 try {
-                    String url = ConstStrings.serverAddress + "/login";
-                    SpringSecurityClient client = SpringSecurityClient.login_ns(url, username, password);
+                    String url2 = ConstStrings.serverAddress + "/login";
+                    SpringSecurityClient client = SpringSecurityClient.login_ns(url2, username, password);
                     client.saveCookiesToSharedPreferences(getContext());
 
                     Log.i("Welcome screen", "Logged to account");
@@ -123,15 +126,23 @@ public class WelcomeScreen extends Fragment {
                     });
 
                 }
+            }
+            else{
+                Log.i("Welcome screen", "Can`t find user data.");
+            }
+            getActivity().runOnUiThread(() -> {
+                loadingAVD.stop();
+                loadingImage.setVisibility(View.GONE);
+                loginButton.setEnabled(true);
+                registrationButton.setEnabled(true);
             });
-        }
-        else{
-            Log.i("Welcome screen", "Can`t find user data.");
-        }
-
-        loadingAVD.stop();
-        loadingImage.setVisibility(View.GONE);
-        loginButton.setEnabled(true);
-        registrationButton.setEnabled(true);
+        }).exceptionally(e -> {
+            getActivity().runOnUiThread(() -> {
+                logText.setText("Сервера не отвечают");
+                loadingAVD.stop();
+                loadingImage.setVisibility(View.GONE);
+            });
+            return null;
+        });
     }
 }

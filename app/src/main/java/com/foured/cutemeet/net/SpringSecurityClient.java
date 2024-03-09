@@ -245,6 +245,10 @@ public class SpringSecurityClient {
     }
 
     // no cookies
+    public static CompletableFuture<String> get_nc_async(String url, int timeToTimeout){
+        return CompletableFuture.supplyAsync(() -> get_nc(url, timeToTimeout));
+    }
+
     public static CompletableFuture<String> get_nc_async(String url){
         return CompletableFuture.supplyAsync(() -> get_nc(url));
     }
@@ -312,6 +316,26 @@ public class SpringSecurityClient {
     }
 
     // no cookies
+
+    public static String get_nc(String url, int timeToTimeout){
+        try {
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .connectTimeout(timeToTimeout, TimeUnit.SECONDS)
+                    .readTimeout(timeToTimeout, TimeUnit.SECONDS)
+                    .writeTimeout(timeToTimeout, TimeUnit.SECONDS)
+                    .build();
+            Request request = new Request.Builder()
+                    .url(url)
+                    .build();
+            Response response = client.newCall(request).execute();
+
+            return response.body().string();
+        }
+        catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+
     public static String get_nc(String url){
         try {
             OkHttpClient client = new OkHttpClient.Builder()
