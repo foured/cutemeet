@@ -38,9 +38,14 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
     @Override
     public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
         holder.bg.setImageResource(R.drawable.eventspanel_eventprew);
-        holder.eventName.setText(eventsDataList.get(position).name);
-        holder.senderName.setText(eventsDataList.get(position).senderName);
-        holder.eventDate.setText(eventsDataList.get(position).date);
+        String description = eventsDataList.get(position).description;
+        String output = description;
+        System.out.println(description.length());
+        int end = 115;
+        if(description.length() > end){
+            output = description.substring(0, end) + "....";
+        }
+        holder.descriptionText.setText(output);
     }
 
     @Override
@@ -52,18 +57,14 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
 
         ImageView bg;
         ImageButton moreInfoButton;
-        TextView eventName;
-        TextView senderName;
-        TextView eventDate;
+        TextView descriptionText;
 
         public EventViewHolder(@NonNull View itemView) {
             super(itemView);
 
             bg = itemView.findViewById(R.id.eventPrev_bg);
             moreInfoButton = itemView.findViewById(R.id.eventPrev_moreInfoButton);
-            eventName = itemView.findViewById(R.id.eventPrev_eventNameText);
-            senderName = itemView.findViewById(R.id.eventPrev_senderNameText);
-            eventDate = itemView.findViewById(R.id.eventPrev_eventLocationText);
+            descriptionText = itemView.findViewById(R.id.eventPrev_descriptionText);
         }
     }
 }

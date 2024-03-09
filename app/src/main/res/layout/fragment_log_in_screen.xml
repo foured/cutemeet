@@ -16,8 +16,6 @@
         android:textSize="24dp"
         android:gravity="center_horizontal"/>
 
-
-
     <TextView
         android:id="@+id/logInPanel_loginText"
         android:layout_width="wrap_content"
@@ -122,6 +120,14 @@
             android:layout_marginTop="276dp"
             android:layout_gravity="center_horizontal"
             android:contentDescription="@string/NULL"/>
+
+        <ImageView
+            android:id="@+id/logInPanel_loadingImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="95dp"
+            android:src="@drawable/loading_anim"/>
 
     </FrameLayout>
 

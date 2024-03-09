@@ -84,6 +84,11 @@
             app:destination="@id/registrationScreen_1"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_welcomeScreen_to_news"
+            app:destination="@id/news"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/registrationScreen_1"

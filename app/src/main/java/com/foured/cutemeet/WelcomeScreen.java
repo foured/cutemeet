@@ -1,5 +1,8 @@
 package com.foured.cutemeet;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,11 +10,21 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.foured.cutemeet.config.ConstStrings;
 import com.foured.cutemeet.models.UserAccountData;
+import com.foured.cutemeet.net.AuthenticationException;
+import com.foured.cutemeet.net.SpringSecurityClient;
+
+import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,9 +83,55 @@ public class WelcomeScreen extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        view.findViewById(R.id.welcomePanel_enterAccountButton)
-                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeScreen_to_logInScreen));
-        view.findViewById(R.id.welcomePanel_registrationButton)
-                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeScreen_to_registrationScreen_1));
+        ImageButton loginButton = view.findViewById(R.id.welcomePanel_enterAccountButton);
+        loginButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeScreen_to_logInScreen));
+        loginButton.setEnabled(false);
+        ImageButton registrationButton = view.findViewById(R.id.welcomePanel_registrationButton);
+        registrationButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_welcomeScreen_to_registrationScreen_1));
+        registrationButton.setEnabled(false);
+
+        TextView logText = view.findViewById(R.id.welcomePanel_logText);
+        logText.setText("");
+
+        ImageView loadingImage = view.findViewById(R.id.welcomePanel_loadingImage);
+        AnimatedVectorDrawable loadingAVD = (AnimatedVectorDrawable) loadingImage.getDrawable();
+
+        loadingAVD.start();
+
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences(ConstStrings.sharedPreferencesUserDataPath, Context.MODE_PRIVATE);
+        String username = sharedPreferences.getString(ConstStrings.sharedPreferences_usernameKey, null);
+        String password = sharedPreferences.getString(ConstStrings.sharedPreferences_passwordKey, null);
+
+        if(username != null && password != null){
+            CompletableFuture<Void> asyncProcessing = CompletableFuture.runAsync(() -> {
+                try {
+                    String url = ConstStrings.serverAddress + "/login";
+                    SpringSecurityClient client = SpringSecurityClient.login_ns(url, username, password);
+                    client.saveCookiesToSharedPreferences(getContext());
+
+                    Log.i("Welcome screen", "Logged to account");
+                    getActivity().runOnUiThread(() -> {
+                        loadingAVD.stop();
+                        loadingImage.setVisibility(View.GONE);
+                        Navigation.findNavController(view).navigate(R.id.action_welcomeScreen_to_news);
+                    });
+                } catch (Exception e){
+                    Log.w("Welcome screen", "Error: \n" + e);
+                    getActivity().runOnUiThread(() -> {
+                        loadingAVD.stop();
+                        loadingImage.setVisibility(View.GONE);
+                    });
+
+                }
+            });
+        }
+        else{
+            Log.i("Welcome screen", "Can`t find user data.");
+        }
+
+        loadingAVD.stop();
+        loadingImage.setVisibility(View.GONE);
+        loginButton.setEnabled(true);
+        registrationButton.setEnabled(true);
     }
 }

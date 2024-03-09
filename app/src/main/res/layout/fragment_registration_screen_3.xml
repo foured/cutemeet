@@ -8,6 +8,17 @@
     android:background="@color/mainscreen_bg">
 
     <TextView
+        android:id="@+id/registrationPanel_3_logText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="delete me"
+        android:textColor="@android:color/holo_red_dark"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="24dp"
+        android:gravity="center_horizontal"/>
+
+
+    <TextView
         android:id="@+id/registrationPanel_3_registerText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -77,6 +88,15 @@
             android:background="@android:color/transparent"
             android:contentDescription="@string/NULL"
             />
+
+        <ImageView
+            android:id="@+id/registrationPanel_3_loadingImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="47dp"
+            android:src="@drawable/loading_anim"/>
+
     </FrameLayout>
 
     <ImageView

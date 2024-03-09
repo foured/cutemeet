@@ -104,8 +104,8 @@ public class Events extends Fragment {
         eventsList.setLayoutManager(layoutManager);
         eventsList.setHasFixedSize(true);
 
-        SpringSecurityClient client = SpringSecurityClient.createFromCookiesData(SpringSecurityClient.loadCookiesDataFromSharedPreferences(getContext()));
-        CompletableFuture<String> action = client.get_async(ConstStrings.serverAddress + "/activities/all");
+        //SpringSecurityClient client = SpringSecurityClient.createFromCookiesData(SpringSecurityClient.loadCookiesDataFromSharedPreferences(getContext()));
+        CompletableFuture<String> action = SpringSecurityClient.get_nc_async(ConstStrings.serverAddress + "/activities/all");
 
         action.thenAcceptAsync(result -> {
             List<EventData> eventList = parseJsonArray(result, EventData.class);

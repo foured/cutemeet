@@ -1,5 +1,6 @@
 package com.foured.cutemeet;
 
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.foured.cutemeet.config.ConstStrings;
@@ -86,14 +89,31 @@ public class RegistrationScreen_3 extends Fragment {
         EditText cET = ((EditText) view.findViewById(R.id.registrationPanel_3_codeEditText));
         cET.getText().clear();
 
+        TextView logText = view.findViewById(R.id.registrationPanel_3_logText);
+        logText.setText("");
+
+        ImageView loadingImage = view.findViewById(R.id.registrationPanel_3_loadingImage);
+        loadingImage.setVisibility(View.GONE);
+        AnimatedVectorDrawable loadingAVD = (AnimatedVectorDrawable) loadingImage.getDrawable();
+
         view.findViewById(R.id.registrationPanel_3_backButton)
-                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_registrationScreen_3_to_registrationScreen_2));
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("user_account_data", uad);
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("user_account_data", uad);
+                        Navigation.findNavController(view).navigate(R.id.action_registrationScreen_3_to_registrationScreen_2);
+                    }
+                });
+
         view.findViewById(R.id.registrationPanel_3_nextButton)
                 .setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        logText.setText("");
+                        loadingImage.setVisibility(View.VISIBLE);
+                        loadingAVD.start();
+
                         List<SpringSecurityClient.Pair> params = new ArrayList<>();
                         params.add(new SpringSecurityClient.Pair("email", uad.email));
                         params.add(new SpringSecurityClient.Pair("code", cET.getText().toString()));
@@ -103,10 +123,23 @@ public class RegistrationScreen_3 extends Fragment {
                             boolean r = Boolean.parseBoolean(res);
 
                             if(r){
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("user_account_data", uad);
+
+                                getActivity().runOnUiThread(() -> {
+                                    loadingAVD.stop();
+                                    loadingImage.setVisibility(View.GONE);
+                                });
+
                                 Navigation.findNavController(view).navigate(R.id.action_registrationScreen_3_to_registrationScreen_4, bundle);
                             }
                             else{
-                                Toast.makeText(view.getContext(), ConstStrings.wrongCode, Toast.LENGTH_LONG).show();
+                                getActivity().runOnUiThread(() -> {
+                                    loadingAVD.stop();
+                                    loadingImage.setVisibility(View.GONE);
+
+                                    logText.setText(ConstStrings.wrongCode);
+                                });
                             }
                         });
                     }

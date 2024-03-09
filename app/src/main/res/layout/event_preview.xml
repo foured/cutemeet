@@ -19,37 +19,14 @@
         android:layout_marginBottom="11dp" />
 
     <TextView
-        android:id="@+id/eventPrev_eventNameText"
-        android:layout_width="314dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/eventPrev_descriptionText"
+        android:layout_width="361dp"
+        android:layout_height="94dp"
         android:layout_marginLeft="6dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="2dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Название мероприятия"
-        android:textColor="@color/textColor"
-        android:textSize="24sp" />
-
-    <TextView
-        android:id="@+id/eventPrev_senderNameText"
-        android:layout_width="314dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="6dp"
-        android:layout_marginTop="39dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Имя отправителя"
+        android:text="Описание мероприятия"
         android:textColor="@color/textColor"
         android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/eventPrev_eventLocationText"
-        android:layout_width="314dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="6dp"
-        android:layout_marginTop="70dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Место"
-        android:textColor="@color/textColor"
-        android:textSize="20sp" />
-
 
 </FrameLayout>

@@ -1,13 +1,16 @@
 package com.foured.cutemeet;
 
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -94,7 +97,14 @@ public class RegistrationScreen_2 extends Fragment {
 
         view.findViewById(R.id.registrationPanel_2_backButton)
                 .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_registrationScreen_2_to_registrationScreen_1));
-        //Navigation.createNavigateOnClickListener(R.id.action_registrationScreen_2_to_registrationScreen_3
+
+        TextView logText = view.findViewById(R.id.registrationPanel_2_logText);
+        logText.setText("");
+
+        ImageView loadingImage = view.findViewById(R.id.registrationPanel_2_loadingImage);
+        loadingImage.setVisibility(View.GONE);
+        AnimatedVectorDrawable loadingAVD = (AnimatedVectorDrawable)loadingImage.getDrawable();
+
         view.findViewById(R.id.registrationPanel_2_nextButton).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -102,20 +112,56 @@ public class RegistrationScreen_2 extends Fragment {
                         EditText eET = view.findViewById(R.id.registrationPanel_2_emailEditText);
 
                         if(RegistrationFieldsChecker.isPhoneNumber(pnET.getText()) && RegistrationFieldsChecker.isEmailAddress(eET.getText())){
+                            logText.setText("");
+                            loadingImage.setVisibility(View.VISIBLE);
+                            loadingAVD.start();
+
                             Bundle bundle = new Bundle();
                             uad.phoneNumber = String.valueOf(pnET.getText());
                             uad.email = String.valueOf(eET.getText());
                             bundle.putSerializable("user_account_data", uad);
 
-                            String url = ConstStrings.serverAddress + "/operations/send_mail";
-                            List<SpringSecurityClient.Pair> params = new ArrayList<>();
-                            params.add(new SpringSecurityClient.Pair("recipient", uad.email));
-                            CompletableFuture<String> response = SpringSecurityClient.get_nc_async(url, params);
-                            response.thenAccept(res -> {
-                                System.out.println(res);
-                                Navigation.findNavController(view).navigate(R.id.action_registrationScreen_2_to_registrationScreen_3, bundle);
+                            String url1 = ConstStrings.serverAddress + "/operations/check_checkEmailAndPhoneNumber";
+                            List<SpringSecurityClient.Pair> params1 = new ArrayList<>();
+                            params1.add(new SpringSecurityClient.Pair("email", uad.email));
+                            params1.add(new SpringSecurityClient.Pair("phoneNumber", uad.phoneNumber));
+                            CompletableFuture<String> future1 = SpringSecurityClient.get_nc_async(url1, params1);
+
+                            future1.thenAcceptAsync(result1 -> {
+                                if(result1.equals("")){
+                                    String url2 = ConstStrings.serverAddress + "/operations/send_mail";
+                                    List<SpringSecurityClient.Pair> params2 = new ArrayList<>();
+                                    params2.add(new SpringSecurityClient.Pair("recipient", uad.email));
+                                    CompletableFuture<String> future2 = SpringSecurityClient.get_nc_async(url2, params2);
+
+                                    getActivity().runOnUiThread(() -> {
+                                        loadingAVD.stop();
+                                        loadingImage.setVisibility(View.GONE);
+                                    });
+
+                                    Navigation.findNavController(view).navigate(R.id.action_registrationScreen_2_to_registrationScreen_3, bundle);
+                                }
+                                else{
+                                    getActivity().runOnUiThread(() -> {
+                                        loadingAVD.stop();
+                                        loadingImage.setVisibility(View.GONE);
+                                        logText.setText(result1);
+                                    });
+                                }
                             });
 
+
+
+//                            response.thenAcceptAsync(res -> {
+//                                getActivity().runOnUiThread(() -> {
+//                                    loadingAVD.stop();
+//                                    loadingImage.setVisibility(View.GONE);
+//                                });
+//                                Navigation.findNavController(view).navigate(R.id.action_registrationScreen_2_to_registrationScreen_3, bundle);
+//                            }).exceptionally(e -> {
+//                                Log.e("Reg panel 3","Error during the asynchronous operation: " + e.getMessage());
+//                                return null;
+//                            });
                         }
                         else{
                             Toast.makeText(view.getContext(), ConstStrings.wrongRegistrationLine, Toast.LENGTH_LONG).show();

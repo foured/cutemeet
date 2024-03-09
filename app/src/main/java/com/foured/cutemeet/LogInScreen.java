@@ -1,5 +1,8 @@
 package com.foured.cutemeet;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.foured.cutemeet.config.ConstStrings;
@@ -87,8 +91,8 @@ public class LogInScreen extends Fragment {
         EditText pET = view.findViewById(R.id.logInPanel_passwordEditText);
         pET.getText().clear();
 
-        TextView logTW = view.findViewById(R.id.logInPanel_logText);
-        logTW.setText("");
+        TextView logText = view.findViewById(R.id.logInPanel_logText);
+        logText.setText("");
 
         view.findViewById(R.id.logInPanel_forgotPasswordButton)
                 .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_logInScreen_to_passwordRecoveryScreen_1));
@@ -97,9 +101,17 @@ public class LogInScreen extends Fragment {
 
         ImageButton loginButton = view.findViewById(R.id.logInPanel_loginButton);
 
+        ImageView loadingImage = view.findViewById(R.id.logInPanel_loadingImage);
+        loadingImage.setVisibility(View.GONE);
+        AnimatedVectorDrawable loadingAVD = (AnimatedVectorDrawable) loadingImage.getDrawable();
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                logText.setText("");
+                loadingImage.setVisibility(View.VISIBLE);
+                loadingAVD.start();
+
                 String username = String.valueOf(unET.getText());
                 String password = String.valueOf(pET.getText());
 
@@ -116,17 +128,35 @@ public class LogInScreen extends Fragment {
                         SpringSecurityClient client = SpringSecurityClient.login_ns(url2, username, password);
                         client.saveCookiesToSharedPreferences(getContext());
 
+                        SharedPreferences sharedPreferences = getContext().getSharedPreferences(ConstStrings.sharedPreferencesUserDataPath, Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString(ConstStrings.sharedPreferences_usernameKey, username);
+                        editor.putString(ConstStrings.sharedPreferences_passwordKey, password);
+                        editor.apply();
+
+                        getActivity().runOnUiThread(() -> {
+                            loadingAVD.stop();
+                            loadingImage.setVisibility(View.GONE);
+                        });
+
                         Navigation.findNavController(view).navigate(R.id.action_logInScreen_to_news);
                     }
                     catch (AuthenticationException ae){
                         Log.w("LOGIN", "Login error: \n" + ae);
 
                         getActivity().runOnUiThread(() -> {
-                            ((TextView) view.findViewById(R.id.logInPanel_logText)).setText("Неправильный логин или пароль.");
+                            logText.setText("Неправильный логин или пароль.");
+                            loadingAVD.stop();
+                            loadingImage.setVisibility(View.GONE);
                         });
 
                     }catch (IOException ioe){
                         Log.w("LOGIN", "HTTP error: \n" + ioe);
+
+                        getActivity().runOnUiThread(() -> {
+                            loadingAVD.stop();
+                            loadingImage.setVisibility(View.GONE);
+                        });
                     }
                 });
             }

@@ -2,6 +2,7 @@ package com.foured.cutemeet;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.foured.cutemeet.algorithms.RegistrationFieldsChecker;
@@ -25,6 +27,8 @@ import com.foured.cutemeet.models.UserAccountData;
 import com.foured.cutemeet.net.HTTP;
 import com.foured.cutemeet.net.SpringSecurityClient;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -90,10 +94,17 @@ public class RegistrationScreen_4 extends Fragment {
         EditText unET = (EditText) view.findViewById(R.id.registrationPanel_4_usernameEditText);
         EditText pET = (EditText) view.findViewById(R.id.registrationPanel_4_passwordEditText);
         EditText pcET = (EditText) view.findViewById(R.id.registrationPanel_4_passwordConfirmEditText);
-
         unET.getText().clear();
         pET.getText().clear();
         pcET.getText().clear();
+
+        TextView logText = view.findViewById(R.id.registrationPanel_4_logText);
+        logText.setText("");
+
+        ImageView loadingImage = view.findViewById(R.id.registrationPanel_4_loadingImage);
+        loadingImage.setVisibility(View.GONE);
+        AnimatedVectorDrawable loadingAVD = (AnimatedVectorDrawable) loadingImage.getDrawable();
+
         unET.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -171,18 +182,46 @@ public class RegistrationScreen_4 extends Fragment {
             public void onClick(View v) {
                 if(RegistrationFieldsChecker.isUsername(unET.getText()) && RegistrationFieldsChecker.isPassword(pET.getText())
                  && String.valueOf(pcET.getText()).equals(String.valueOf(pET.getText()))){
+                    logText.setText("");
+                    loadingImage.setVisibility(View.VISIBLE);
+                    loadingAVD.start();
+
                     uad.password = String.valueOf(pET.getText());
                     uad.userName = String.valueOf(unET.getText());
+                    String jsonUser = uad.toJsonString();
 
-                    String url = ConstStrings.serverAddress + "/operations/new_user";
-                    CompletableFuture<String> result = SpringSecurityClient.post_nc_async(url, uad.toJsonString());
+                    String url1 = ConstStrings.serverAddress + "/operations/check_checkUsername";
+                    List<SpringSecurityClient.Pair> params = new ArrayList<>();
+                    params.add(new SpringSecurityClient.Pair("username", uad.userName));
+                    CompletableFuture<String> future1 = SpringSecurityClient.get_nc_async(url1, params);
 
-                    result.thenAccept(res -> {
-                        System.out.println("Response from server: " + result);
-                        Navigation.findNavController(view).navigate(R.id.action_registrationScreen_4_to_logInScreen);
+                    future1.thenAcceptAsync(result -> {
+                        if(result.equals("")){
+                            String url2 = ConstStrings.serverAddress + "/operations/new_user";
+                            CompletableFuture<String> future2 = SpringSecurityClient.post_nc_async(url2, jsonUser);
+
+                            future2.thenAccept(res -> {
+                                getActivity().runOnUiThread(() -> {
+                                    loadingAVD.stop();
+                                    loadingImage.setVisibility(View.GONE);
+                                });
+                                Navigation.findNavController(view).navigate(R.id.action_registrationScreen_4_to_logInScreen);
+                            });
+                        }
+                        else{
+                            getActivity().runOnUiThread(() -> {
+                                loadingAVD.stop();
+                                loadingImage.setVisibility(View.GONE);
+                                logText.setText(result);
+                            });
+                        }
                     });
                 }
                 else{
+                    getActivity().runOnUiThread(() -> {
+                        loadingAVD.stop();
+                        loadingImage.setVisibility(View.GONE);
+                    });
                     Toast.makeText(view.getContext(), ConstStrings.wrongRegistrationLine, Toast.LENGTH_LONG).show();
                 }
             }

@@ -88,7 +88,14 @@ public class CreateEventPanel_3 extends Fragment {
         EditText tET = view.findViewById(R.id.createEventsPanel_3_tagsEditText);
         tET.getText().clear();
 
-        backButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_createEventPanel_2_to_createEventPanel_1));
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("event_data", eventData);
+                Navigation.findNavController(view).navigate(R.id.action_createEventPanel_3_to_createEventPanel_2);
+            }
+        });
 
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override

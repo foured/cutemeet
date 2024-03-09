@@ -11,10 +11,14 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 public class SpringSecurityClient {
     private static final String sharedPreferencesName = "SpringSecurityData";
     private static final String sharedPreferences_cookiesKey = "Cookies";
+    private static final String sharedPreferences_usernameKey = "username";
+    private static final String sharedPreferences_passwordKey = "password";
+    private static final int timeToTimeout = 30;
 
     public static class MyCookieJar implements CookieJar {
         private List<Cookie> cookies = new ArrayList<>();
@@ -65,6 +69,9 @@ public class SpringSecurityClient {
             cookieJar = new MyCookieJar();
             client_main = new OkHttpClient.Builder()
                     .cookieJar(cookieJar)
+                    .readTimeout(timeToTimeout, TimeUnit.SECONDS).readTimeout(timeToTimeout, TimeUnit.SECONDS).connectTimeout(timeToTimeout, TimeUnit.SECONDS)
+                    .readTimeout(timeToTimeout, TimeUnit.SECONDS)
+                    .writeTimeout(timeToTimeout, TimeUnit.SECONDS)
                     .build();
 
             HttpUrl.Builder queryUrlBuilder = HttpUrl.get(url).newBuilder();
@@ -88,6 +95,9 @@ public class SpringSecurityClient {
         cookieJar.setCookies(cookies);
         client_main = new OkHttpClient.Builder()
                 .cookieJar(cookieJar)
+                        .writeTimeout(timeToTimeout, TimeUnit.SECONDS)        .writeTimeout(timeToTimeout, TimeUnit.SECONDS).connectTimeout(timeToTimeout, TimeUnit.SECONDS)
+                .readTimeout(timeToTimeout, TimeUnit.SECONDS)
+                .writeTimeout(timeToTimeout, TimeUnit.SECONDS)
                 .build();
     }
 
@@ -119,6 +129,9 @@ public class SpringSecurityClient {
             MyCookieJar m_cookieJar = new MyCookieJar();
             OkHttpClient client = new OkHttpClient.Builder()
                     .cookieJar(m_cookieJar)
+                            .connectTimeout(timeToTimeout, TimeUnit.SECONDS)        .connectTimeout(timeToTimeout, TimeUnit.SECONDS).connectTimeout(timeToTimeout, TimeUnit.SECONDS)
+                    .readTimeout(timeToTimeout, TimeUnit.SECONDS)
+                    .writeTimeout(timeToTimeout, TimeUnit.SECONDS)
                     .build();
             HttpUrl.Builder queryUrlBuilder = HttpUrl.get(url).newBuilder();
             queryUrlBuilder
@@ -141,6 +154,9 @@ public class SpringSecurityClient {
     public static SpringSecurityClient login_ns(String url, String username, String password) throws IOException, AuthenticationException {
         MyCookieJar m_cookieJar = new MyCookieJar();
         OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(timeToTimeout, TimeUnit.SECONDS)
+                .readTimeout(timeToTimeout, TimeUnit.SECONDS)
+                .writeTimeout(timeToTimeout, TimeUnit.SECONDS)
                 .cookieJar(m_cookieJar)
                 .build();
         HttpUrl.Builder queryUrlBuilder = HttpUrl.get(url).newBuilder();
@@ -298,7 +314,11 @@ public class SpringSecurityClient {
     // no cookies
     public static String get_nc(String url){
         try {
-            OkHttpClient client = new OkHttpClient();
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .connectTimeout(timeToTimeout, TimeUnit.SECONDS)
+                    .readTimeout(timeToTimeout, TimeUnit.SECONDS)
+                    .writeTimeout(timeToTimeout, TimeUnit.SECONDS)
+                    .build();
             Request request = new Request.Builder()
                     .url(url)
                     .build();
@@ -313,7 +333,11 @@ public class SpringSecurityClient {
 
     public static String get_nc(String url, List<Pair> params){
         try {
-            OkHttpClient client = new OkHttpClient();
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .connectTimeout(timeToTimeout, TimeUnit.SECONDS)
+                    .readTimeout(timeToTimeout, TimeUnit.SECONDS)
+                    .writeTimeout(timeToTimeout, TimeUnit.SECONDS)
+                    .build();
 
             HttpUrl.Builder queryUrlBuilder = HttpUrl.get(url).newBuilder();
             for(Pair param: params){
@@ -334,7 +358,11 @@ public class SpringSecurityClient {
 
     public static String post_nc(String url, String jsonData){
         try{
-            OkHttpClient client = new OkHttpClient();
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .connectTimeout(timeToTimeout, TimeUnit.SECONDS)
+                    .readTimeout(timeToTimeout, TimeUnit.SECONDS)
+                    .writeTimeout(timeToTimeout, TimeUnit.SECONDS)
+                    .build();
             MediaType JSON = MediaType.get("application/json; charset=utf-8");
             Request request = new Request.Builder()
                     .url(url)
