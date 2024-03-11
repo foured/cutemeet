@@ -1,5 +1,6 @@
 package com.foured.cutemeet;
 
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.foured.cutemeet.adapters.EventsAdapter;
@@ -104,8 +106,12 @@ public class Events extends Fragment {
         eventsList.setLayoutManager(layoutManager);
         eventsList.setHasFixedSize(true);
 
-        //SpringSecurityClient client = SpringSecurityClient.createFromCookiesData(SpringSecurityClient.loadCookiesDataFromSharedPreferences(getContext()));
-        CompletableFuture<String> action = SpringSecurityClient.get_nc_async(ConstStrings.serverAddress + "/activities/all");
+        ImageView loadingImage = view.findViewById(R.id.eventsPanel_loadingImage);
+        AnimatedVectorDrawable loadingAVD = (AnimatedVectorDrawable) loadingImage.getDrawable();
+        loadingAVD.start();
+
+        SpringSecurityClient client = SpringSecurityClient.createFromCookiesData(SpringSecurityClient.loadCookiesDataFromSharedPreferences(getContext()));
+        CompletableFuture<String> action = client.get_async(ConstStrings.serverAddress + "/activities/all");
 
         action.thenAcceptAsync(result -> {
             List<EventData> eventList = parseJsonArray(result, EventData.class);
@@ -118,6 +124,9 @@ public class Events extends Fragment {
                 eventsList.addItemDecoration(dividerItemDecoration);
 
                 eventsList.setAdapter(eventsAdapter);
+
+                loadingAVD.stop();
+                loadingImage.setVisibility(View.GONE);
             });
         });
     }

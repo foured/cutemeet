@@ -1,5 +1,6 @@
 package com.foured.cutemeet;
 
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.foured.cutemeet.config.ConstStrings;
 import com.foured.cutemeet.models.EventData;
@@ -88,6 +90,10 @@ public class CreateEventPanel_3 extends Fragment {
         EditText tET = view.findViewById(R.id.createEventsPanel_3_tagsEditText);
         tET.getText().clear();
 
+        ImageView loadingImage = view.findViewById(R.id.createEventsPanel_3_loadingImage);
+        loadingImage.setVisibility(View.GONE);
+        AnimatedVectorDrawable loadingAVD = (AnimatedVectorDrawable) loadingImage.getDrawable();
+
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,6 +106,9 @@ public class CreateEventPanel_3 extends Fragment {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                loadingImage.setVisibility(View.VISIBLE);
+                loadingAVD.start();
+
                 eventData.tags = String.valueOf(tET.getText());
 
                 String url = ConstStrings.serverAddress + "/activities/save";
@@ -107,7 +116,11 @@ public class CreateEventPanel_3 extends Fragment {
                 future.thenAcceptAsync(result -> {
                     Log.i("Event sender", "Response from server: " + result);
 
-                    Navigation.findNavController(view).navigate(R.id.action_createEventPanel_3_to_events);
+                    getActivity().runOnUiThread(()-> {
+                        loadingAVD.stop();
+                        loadingImage.setVisibility(View.GONE);
+                        Navigation.findNavController(view).navigate(R.id.action_createEventPanel_3_to_events);
+                    });
                 });
             }
         });
