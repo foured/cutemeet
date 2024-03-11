@@ -40,7 +40,6 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
         holder.bg.setImageResource(R.drawable.eventspanel_eventprew);
         String description = eventsDataList.get(position).description;
         String output = description;
-        System.out.println(description.length());
         int end = 115;
         if(description.length() > end){
             output = description.substring(0, end) + "....";

@@ -83,11 +83,21 @@
         android:id="@+id/eventsPanel_newEventButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/eventspanel_createeventbutton"
+        android:src="@drawable/newimage"
         android:background="@android:color/transparent"
         android:layout_gravity="right"
         android:layout_marginTop="3dp"
         android:layout_marginRight="11dp"/>
+
+    <ImageButton
+        android:id="@+id/eventsPanel_findButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/findimage"
+        android:background="@android:color/transparent"
+        android:layout_gravity="right"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="70dp"/>
 
     <ImageView
         android:id="@+id/eventsPanel_topDevidor"
@@ -100,18 +110,211 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/eventsPanel_eventsPrev_recyclerView"
         android:layout_width="wrap_content"
-        android:layout_height="580dp"
-        android:layout_marginTop="60dp"
+        android:layout_height="555dp"
+        android:layout_marginTop="85dp"
         android:layout_gravity="center_horizontal"
         android:overScrollMode="never"/>
 
     <ImageView
+        android:visibility="gone"
         android:id="@+id/eventsPanel_loadingImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="250dp"
         android:src="@drawable/loading_anim"/>
+
+    <TextView
+        android:id="@+id/eventsPanel_logTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_horizontal"
+        android:text="delete me"
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+        android:typeface="sans"/>
+
+    <FrameLayout
+        android:visibility="gone"
+        android:id="@+id/eventsPanel_findPanel"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/findpanel_topbg"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="6dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Поиск"
+            android:textColor="@color/textColor"
+            android:textSize="24sp"
+            android:typeface="sans" />
+
+        <ImageButton
+            android:id="@+id/eventsPanel_findPanel_findByTagsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/findpanel_findbytags_active"
+            android:background="@android:color/transparent"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="54dp" />
+
+        <ImageButton
+            android:id="@+id/eventsPanel_findPanel_findByUsernameButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/findpanel_findbyusername_notactive"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="49dp"/>
+
+        <ImageButton
+            android:id="@+id/eventsPanel_findPanel_findByPlaceButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/findpanel_findbyplace_notactive"
+            android:background="@android:color/transparent"
+            android:layout_gravity="right"
+            android:layout_marginEnd="21dp"
+            android:layout_marginTop="54dp"/>
+
+        <FrameLayout
+            android:id="@+id/eventsPanel_findPanel_byTagsPanel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="117dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/findpanel_findbytagsbg"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Теги (через запятую):"
+                android:textColor="@color/textColor"
+                android:textSize="24sp"
+                android:typeface="sans"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="29dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eventsPanel_findPanel_byTagsPanel_tagsEditText"
+                    android:layout_width="328dp"
+                    android:layout_height="89dp"
+                    android:gravity="top|left"
+                    android:text="delete me"
+                    android:textSize="15sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/textColor"
+                    android:background="@drawable/findpanel_tagsinputfield"
+                    android:padding="3dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageButton
+                android:id="@+id/eventsPanel_findPanel_byTagsPanel_backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/findpanel_backbutton"
+                android:background="@android:color/transparent"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="23dp"
+                android:layout_marginBottom="19dp"/>
+
+            <ImageButton
+                android:id="@+id/eventsPanel_findPanel_byTagsPanel_findButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/findpanel_findbutton"
+                android:background="@android:color/transparent"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="23dp"
+                android:layout_marginBottom="19dp"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:visibility="invisible"
+            android:id="@+id/eventsPanel_findPanel_byUsernamePanel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="117dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/findpanel_findbyusernamebg"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Имя пользователя:"
+                android:textColor="@color/textColor"
+                android:textSize="24sp"
+                android:typeface="sans"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="26dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/eventsPanel_findPanel_byUsernamePanel_usernameEditText"
+                    android:layout_width="327dp"
+                    android:layout_height="48dp"
+                    android:text="delete me"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/textColor"
+                    android:background="@drawable/findpanel_usernameinputfield"
+                    android:padding="0dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageButton
+                android:id="@+id/eventsPanel_findPanel_byUsernamePanel_backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/findpanel_backbutton"
+                android:background="@android:color/transparent"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="23dp"
+                android:layout_marginBottom="16dp"/>
+
+            <ImageButton
+                android:id="@+id/eventsPanel_findPanel_byUsernamePanel_findButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/findpanel_findbutton"
+                android:background="@android:color/transparent"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="23dp"
+                android:layout_marginBottom="16dp"/>
+
+        </FrameLayout>
+
+    </FrameLayout>
+        
 
 
 </FrameLayout>
