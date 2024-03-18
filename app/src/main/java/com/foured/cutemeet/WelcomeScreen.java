@@ -101,34 +101,37 @@ public class WelcomeScreen extends Fragment {
         String url1 = ConstStrings.serverAddress + "/operations/ping";
         CompletableFuture<String> future = SpringSecurityClient.get_nc_async(url1);
 
+        boolean autoAuth = false;
+
         future.thenAcceptAsync(result1 -> {
             SharedPreferences sharedPreferences = getContext().getSharedPreferences(ConstStrings.sharedPreferencesUserDataPath, Context.MODE_PRIVATE);
             String username = sharedPreferences.getString(ConstStrings.sharedPreferences_usernameKey, null);
             String password = sharedPreferences.getString(ConstStrings.sharedPreferences_passwordKey, null);
 
-            if(username != null && password != null){
-                try {
-                    String url2 = ConstStrings.serverAddress + "/login";
-                    SpringSecurityClient client = SpringSecurityClient.login_ns(url2, username, password);
-                    client.saveCookiesToSharedPreferences(getContext());
+            if(autoAuth) {
+                if (username != null && password != null) {
+                    try {
+                        String url2 = ConstStrings.serverAddress + "/login";
+                        SpringSecurityClient client = SpringSecurityClient.login_ns(url2, username, password);
+                        client.saveCookiesToSharedPreferences(getContext());
 
-                    Log.i("Welcome screen", "Logged to account");
-                    getActivity().runOnUiThread(() -> {
-                        loadingAVD.stop();
-                        loadingImage.setVisibility(View.GONE);
-                        Navigation.findNavController(view).navigate(R.id.action_welcomeScreen_to_news);
-                    });
-                } catch (Exception e){
-                    Log.w("Welcome screen", "Error: \n" + e);
-                    getActivity().runOnUiThread(() -> {
-                        loadingAVD.stop();
-                        loadingImage.setVisibility(View.GONE);
-                    });
+                        Log.i("Welcome screen", "Logged to account");
+                        getActivity().runOnUiThread(() -> {
+                            loadingAVD.stop();
+                            loadingImage.setVisibility(View.GONE);
+                            Navigation.findNavController(view).navigate(R.id.action_welcomeScreen_to_news);
+                        });
+                    } catch (Exception e) {
+                        Log.w("Welcome screen", "Error: \n" + e);
+                        getActivity().runOnUiThread(() -> {
+                            loadingAVD.stop();
+                            loadingImage.setVisibility(View.GONE);
+                        });
 
+                    }
+                } else {
+                    Log.i("Welcome screen", "Can`t find user data.");
                 }
-            }
-            else{
-                Log.i("Welcome screen", "Can`t find user data.");
             }
             getActivity().runOnUiThread(() -> {
                 loadingAVD.stop();

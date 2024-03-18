@@ -166,8 +166,8 @@ public class Events extends Fragment {
             @Override
             public void onClick(View v) {
                 if(currentActiveFindPanel == ActiveFindPanel.USERNAME){
-                    swipeVisivility(findByTags);
-                    swipeVisivility(findByUsername);
+                    swipeVisibility(findByTags);
+                    swipeVisibility(findByUsername);
                     currentActiveFindPanel = ActiveFindPanel.TAGS;
 
                     find_byUsernameButton.setImageResource(R.drawable.findpanel_findbyusername_notactive);
@@ -179,8 +179,8 @@ public class Events extends Fragment {
             @Override
             public void onClick(View v) {
                 if(currentActiveFindPanel == ActiveFindPanel.TAGS){
-                    swipeVisivility(findByTags);
-                    swipeVisivility(findByUsername);
+                    swipeVisibility(findByTags);
+                    swipeVisibility(findByUsername);
                     currentActiveFindPanel = ActiveFindPanel.USERNAME;
 
                     find_byUsernameButton.setImageResource(R.drawable.findpanel_findbyusername_active);
@@ -287,7 +287,7 @@ public class Events extends Fragment {
         loadAllEvents(view);
     }
 
-    private static void swipeVisivility(View view){
+    private static void swipeVisibility(View view){
         if(view.getVisibility() == View.VISIBLE){
             view.setVisibility(View.GONE);
         }
