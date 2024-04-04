@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserProfilePanel"
+    android:background="@color/mainscreen_bg">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/userProfilePanel_avatarImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="37dp"
+        app:shapeAppearanceOverlay="@style/rounded_image"
+        android:src="@drawable/defaultavatar" />
+
+    <TextView
+        android:id="@+id/userProfilePanel_usernameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="187dp"
+        android:fontFamily="sans-serif-black"
+        android:text="\@username"
+        android:textColor="@color/textColor"
+        android:textSize="16sp"
+        android:typeface="sans" />
+
+    <FrameLayout
+        android:layout_width="315dp"
+        android:layout_height="73dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="222dp"
+        android:background="@drawable/accountpanel_basedatabg">
+
+        <TextView
+            android:id="@+id/userProfilePanel_FIOText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Иванов Иван Иванович"
+            android:textColor="@color/textColor"
+            android:textSize="16sp"
+            android:typeface="sans"/>
+
+        <TextView
+            android:id="@+id/userProfilePanel_birthdayDateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Заполните анкету"
+            android:textColor="@color/textColor"
+            android:textSize="16sp"
+            android:typeface="sans"/>
+
+        <TextView
+            android:id="@+id/userProfilePanel_educationPlaceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="45dp"
+            android:fontFamily="sans-serif-medium"
+            android:text=""
+            android:textColor="@color/textColor"
+            android:textSize="16sp"
+            android:typeface="sans"/>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="315dp"
+        android:layout_height="123dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="307dp"
+        android:background="@drawable/accountpanel_databg" >
+
+        <TextView
+            android:id="@+id/userProfilePanel_descriptionText"
+            android:layout_width="305dp"
+            android:layout_height="110dp"
+            android:layout_gravity="right|center_vertical"
+            android:fontFamily="sans-serif-medium"
+            android:text=""
+            android:textColor="@color/textColor"
+            android:textSize="14sp"
+            android:typeface="sans"/>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/userProfilePanel_tagsTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="438dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Теги:"
+        android:textColor="@color/textColor"
+        android:textSize="18sp"
+        android:typeface="sans" />
+
+    <FrameLayout
+        android:layout_width="315dp"
+        android:layout_height="123dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="469dp"
+        android:background="@drawable/accountpanel_databg" >
+
+        <TextView
+            android:id="@+id/userProfilePanel_tagsText"
+            android:layout_width="305dp"
+            android:layout_height="110dp"
+            android:layout_gravity="right|center_vertical"
+            android:fontFamily="sans-serif-medium"
+            android:text=""
+            android:textColor="@color/textColor"
+            android:textSize="14sp"
+            android:typeface="sans"/>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/userProfilePanel_tgText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="600dp"
+        android:fontFamily="sans-serif-medium"
+        android:text=""
+        android:textColor="@color/textColor"
+        android:textSize="16sp"
+        android:typeface="sans" />
+
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/userProfilePanel_loadingImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="250dp"
+        android:src="@drawable/loading_anim"/>
+
+    <ImageButton
+        android:id="@+id/userProfilePanel_backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:src="@drawable/loginsignup_backbutton"
+        android:background="@android:color/transparent"
+        android:layout_marginBottom="40dp"/>
+
+</FrameLayout>

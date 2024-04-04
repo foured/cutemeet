@@ -71,5 +71,6 @@ public class Messanger extends Fragment {
         view.findViewById(R.id.messangerPanel_questionnairesButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_messanger_to_questionnaires));
         view.findViewById(R.id.messangerPanel_eventsButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_messanger_to_events));
         view.findViewById(R.id.messangerPanel_newsButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_messanger_to_news));
+        view.findViewById(R.id.messangerPanel_accountButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_messanger_to_account));
     }
 }

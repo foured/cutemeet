@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_messanger_to_news"
             app:destination="@id/news" />
+        <action
+            android:id="@+id/action_messanger_to_account"
+            app:destination="@id/account" />
     </fragment>
     <fragment
         android:id="@+id/questionnaires"
@@ -33,6 +36,9 @@
         <action
             android:id="@+id/action_questionnaires_to_events"
             app:destination="@id/events" />
+        <action
+            android:id="@+id/action_questionnaires_to_account"
+            app:destination="@id/account" />
     </fragment>
     <fragment
         android:id="@+id/events"
@@ -41,16 +47,30 @@
         tools:layout="@layout/fragment_events" >
         <action
             android:id="@+id/action_events_to_questionnaires"
-            app:destination="@id/questionnaires" />
+            app:destination="@id/questionnaires"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_events_to_messanger"
-            app:destination="@id/messanger" />
+            app:destination="@id/messanger"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_events_to_news"
-            app:destination="@id/news" />
+            app:destination="@id/news"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/action_events_to_createEventPanel_1"
             app:destination="@id/createEventPanel_1"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_events_to_account"
+            app:destination="@id/account" />
+        <action
+            android:id="@+id/action_events_to_eventViewPanel_1"
+            app:destination="@id/eventViewPanel_1"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
     </fragment>
@@ -68,6 +88,9 @@
         <action
             android:id="@+id/action_news_to_messanger"
             app:destination="@id/messanger" />
+        <action
+            android:id="@+id/action_news_to_account"
+            app:destination="@id/account" />
     </fragment>
     <fragment
         android:id="@+id/welcomeScreen"
@@ -289,5 +312,156 @@
         <action
             android:id="@+id/action_createEventPanel_3_to_events"
             app:destination="@id/events" />
+    </fragment>
+    <fragment
+        android:id="@+id/account"
+        android:name="com.foured.cutemeet.Account"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_account_to_events"
+            app:destination="@id/events"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_account_to_messanger"
+            app:destination="@id/messanger"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_account_to_questionnaires"
+            app:destination="@id/questionnaires"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_account_to_news"
+            app:destination="@id/news" />
+        <action
+            android:id="@+id/action_account_to_setAccountDataPanel_1"
+            app:destination="@id/setAccountDataPanel_1"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/setAccountDataPanel_1"
+        android:name="com.foured.cutemeet.SetAccountDataPanel_1"
+        android:label="fragment_set_account_data_panel_1"
+        tools:layout="@layout/fragment_set_account_data_panel_1" >
+        <action
+            android:id="@+id/action_setAccountDataPanel_1_to_setAccountDataPanel_2"
+            app:destination="@id/setAccountDataPanel_2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/setAccountDataPanel_2"
+        android:name="com.foured.cutemeet.SetAccountDataPanel_2"
+        android:label="fragment_set_account_data_panel_2"
+        tools:layout="@layout/fragment_set_account_data_panel_2" >
+        <action
+            android:id="@+id/action_setAccountDataPanel_2_to_setAccountDataPanel_1"
+            app:destination="@id/setAccountDataPanel_1"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_setAccountDataPanel_2_to_setAccountDataPanel_3"
+            app:destination="@id/setAccountDataPanel_3"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/setAccountDataPanel_3"
+        android:name="com.foured.cutemeet.SetAccountDataPanel_3"
+        android:label="fragment_set_account_data_panel_3"
+        tools:layout="@layout/fragment_set_account_data_panel_3" >
+        <action
+            android:id="@+id/action_setAccountDataPanel_3_to_setAccountDataPanel_2"
+            app:destination="@id/setAccountDataPanel_2"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_setAccountDataPanel_3_to_setAccountDataPanel_4"
+            app:destination="@id/setAccountDataPanel_4"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/setAccountDataPanel_4"
+        android:name="com.foured.cutemeet.SetAccountDataPanel_4"
+        android:label="fragment_set_account_data_panel_4"
+        tools:layout="@layout/fragment_set_account_data_panel_4" >
+        <action
+            android:id="@+id/action_setAccountDataPanel_4_to_setAccountDataPanel_3"
+            app:destination="@id/setAccountDataPanel_3"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_setAccountDataPanel_4_to_account"
+            app:destination="@id/account"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventViewPanel_1"
+        android:name="com.foured.cutemeet.EventViewPanel_1"
+        android:label="fragment_event_view_panel_1"
+        tools:layout="@layout/fragment_event_view_panel_1" >
+        <action
+            android:id="@+id/action_eventViewPanel_1_to_events"
+            app:destination="@id/events"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_eventViewPanel_1_to_eventViewPanel_2"
+            app:destination="@id/eventViewPanel_2"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_eventViewPanel_1_to_eventViewPanel_3"
+            app:destination="@id/eventViewPanel_3"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_eventViewPanel_1_to_userProfilePanel"
+            app:destination="@id/userProfilePanel"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@anim/slide_out_left" />-->
+    <fragment
+        android:id="@+id/eventViewPanel_2"
+        android:name="com.foured.cutemeet.EventViewPanel_2"
+        android:label="fragment_event_view_panel_2"
+        tools:layout="@layout/fragment_event_view_panel_2" >
+        <action
+            android:id="@+id/action_eventViewPanel_2_to_eventViewPanel_1"
+            app:destination="@id/eventViewPanel_1"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventViewPanel_3"
+        android:name="com.foured.cutemeet.EventViewPanel_3"
+        android:label="fragment_event_view_panel_3"
+        tools:layout="@layout/fragment_event_view_panel_3" >
+        <action
+            android:id="@+id/action_eventViewPanel_3_to_eventViewPanel_1"
+            app:destination="@id/eventViewPanel_1"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/userProfilePanel"
+        android:name="com.foured.cutemeet.UserProfilePanel"
+        android:label="fragment_user_profile_panel"
+        tools:layout="@layout/fragment_user_profile_panel" >
+        <action
+            android:id="@+id/action_userProfilePanel_to_eventViewPanel_1"
+            app:destination="@id/eventViewPanel_1"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
     </fragment>
 </navigation>

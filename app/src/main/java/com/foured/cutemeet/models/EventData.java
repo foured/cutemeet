@@ -3,12 +3,11 @@ package com.foured.cutemeet.models;
 import com.google.gson.Gson;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class EventData implements Serializable {
     public String name;
-    public String senderName;
     public String date;
+    public String username;
     public String location;
     public String description;
     public String tags;

@@ -4,7 +4,6 @@ import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +19,8 @@ import androidx.navigation.Navigation;
 
 import com.foured.cutemeet.algorithms.RegistrationFieldsChecker;
 import com.foured.cutemeet.config.ConstStrings;
-import com.foured.cutemeet.models.UserAccountData;
+import com.foured.cutemeet.models.UserData;
 import com.foured.cutemeet.net.SpringSecurityClient;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +34,7 @@ import java.util.concurrent.CompletableFuture;
  */
 public class RegistrationScreen_2 extends Fragment {
 
-    private UserAccountData uad;
+    private UserData uad;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -77,7 +73,7 @@ public class RegistrationScreen_2 extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-            uad = (UserAccountData) getArguments().getSerializable("user_account_data");
+            uad = (UserData) getArguments().getSerializable("user_account_data");
         }
     }
 
@@ -149,8 +145,6 @@ public class RegistrationScreen_2 extends Fragment {
                                     });
                                 }
                             });
-
-
 
 //                            response.thenAcceptAsync(res -> {
 //                                getActivity().runOnUiThread(() -> {

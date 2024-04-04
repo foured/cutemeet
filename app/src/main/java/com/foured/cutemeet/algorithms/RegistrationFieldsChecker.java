@@ -1,5 +1,6 @@
 package com.foured.cutemeet.algorithms;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegistrationFieldsChecker {
@@ -20,5 +21,12 @@ public class RegistrationFieldsChecker {
 
     public static boolean isPassword(CharSequence s){
         return s.length() >= 4;
+    }
+
+    public static boolean isDate(CharSequence s){
+        String regex = "^(0[1-9]|[12][0-9]|3[01])\\.(0[1-9]|1[012])\\.(\\d{4})$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(s);
+        return matcher.matches();
     }
 }

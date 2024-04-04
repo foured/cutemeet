@@ -19,11 +19,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.foured.cutemeet.config.ConstStrings;
-import com.foured.cutemeet.models.UserAccountData;
-import com.foured.cutemeet.net.AuthenticationException;
 import com.foured.cutemeet.net.SpringSecurityClient;
 
-import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 
 /**

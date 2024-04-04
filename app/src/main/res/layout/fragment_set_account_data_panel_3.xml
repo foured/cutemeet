@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SetAccountDataPanel_3"
+    android:background="@color/mainscreen_bg">
+
+    <TextView
+        android:id="@+id/setAccountDataPanel_2_pageTitleText"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Создание анкеты"
+        android:textColor="@color/textColor"
+        android:textSize="40sp"
+        android:typeface="sans" />
+
+    <ImageView
+        android:id="@+id/setAccountDataPanel_2_topDevidor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="55dp"
+        android:src="@drawable/topdevidor" />
+
+    <FrameLayout
+        android:layout_width="371dp"
+        android:layout_height="570dp"
+        android:background="@drawable/eventspanel_bg"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp">
+
+        <TextView
+            android:id="@+id/setAccountDataPanel_3_descriptionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="29dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Расскажите немного о себе, своих предпочтениях:"
+            android:textColor="@color/textColor"
+            android:textSize="20sp"
+            android:typeface="sans" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="390dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="76dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/setAccountDataPanel_3_descriptionEditText"
+                android:layout_width="314dp"
+                android:layout_height="384dp"
+                android:gravity="top|left"
+                android:text="delete me"
+                android:textSize="15sp"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/textColor"
+                android:background="@drawable/eventspanel_tagsinputbg"
+                android:padding="10dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/setAccountDataPanel_3_backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|bottom"
+            android:layout_marginLeft="11dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/loginsignup_backbutton"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            />
+
+        <ImageButton
+            android:id="@+id/setAccountDataPanel_3_nextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|bottom"
+            android:layout_marginLeft="191dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/loginsignup_nextbutton"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            />
+
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/setAccountDataPanel_3_pageNumberImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pagenumberimage_3"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="82dp" />
+
+</FrameLayout>

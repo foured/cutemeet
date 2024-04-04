@@ -13,13 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.foured.cutemeet.algorithms.RegistrationFieldsChecker;
 import com.foured.cutemeet.config.ConstStrings;
-import com.foured.cutemeet.models.UserAccountData;
+import com.foured.cutemeet.models.UserData;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -95,7 +94,7 @@ public class RegistrationScreen_1 extends Fragment {
                         if(RegistrationFieldsChecker.isTextLine(snET.getText()) && RegistrationFieldsChecker.isTextLine(nET.getText())){
                             EditText mnET = view.findViewById(R.id.registrationPanel_1_middleNameEditText);
                             Bundle bundle = new Bundle();
-                            UserAccountData uad = new UserAccountData();
+                            UserData uad = new UserData();
                             uad.surname = String.valueOf(snET.getText());
                             uad.name = String.valueOf(nET.getText());
                             uad.middleName = String.valueOf(mnET.getText());

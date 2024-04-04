@@ -72,5 +72,6 @@ public class News extends Fragment {
         view.findViewById(R.id.newsPanel_messabgerButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_news_to_messanger));
         view.findViewById(R.id.newsPanel_questionnairesButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_news_to_questionnaires));
         view.findViewById(R.id.newsPanel_eventsButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_news_to_events));
+        view.findViewById(R.id.newsPanel_accountButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_news_to_account));
     }
 }

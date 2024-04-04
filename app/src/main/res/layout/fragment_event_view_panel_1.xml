@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EventViewPanel_1"
+    android:background="@color/mainscreen_bg">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="0dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="События"
+        android:textColor="@color/textColor"
+        android:textSize="40sp"
+        android:typeface="sans" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="55dp"
+        android:src="@drawable/topdevidor" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="55dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Просмотр"
+        android:textColor="@color/textColor"
+        android:textSize="40sp"
+        android:typeface="sans" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/panel_eventviewgb"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="126dp">
+
+        <TextView
+            android:layout_width="314dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Создатель:"
+            android:textColor="@color/textColor"
+            android:textSize="24sp" />
+        
+        <Button
+            android:id="@+id/eventViewPanel_1_creatorAccountButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="5dp"
+            android:text="username"
+            android:background="@android:color/transparent"
+            android:textSize="20dp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:typeface="sans"
+            android:fontFamily="sans-serif-medium" />
+
+        <TextView
+            android:layout_width="314dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="116dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Название:"
+            android:textColor="@color/textColor"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/eventViewPanel_1_eventNameText"
+            android:layout_width="314dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="150dp"
+            android:fontFamily="sans-serif-medium"
+            android:text=""
+            android:textColor="@color/textColor"
+            android:textSize="22sp" />
+
+        <TextView
+            android:layout_width="314dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="208dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Дата / время проведения:"
+            android:textColor="@color/textColor"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/eventViewPanel_1_eventDateText"
+            android:layout_width="314dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="242dp"
+            android:fontFamily="sans-serif-medium"
+            android:text=""
+            android:textColor="@color/textColor"
+            android:textSize="22sp" />
+
+        <TextView
+            android:layout_width="314dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="300dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Место:"
+            android:textColor="@color/textColor"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/eventViewPanel_1_eventPlaceText"
+            android:layout_width="314dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="334dp"
+            android:fontFamily="sans-serif-medium"
+            android:text=""
+            android:textColor="@color/textColor"
+            android:textSize="22sp" />
+
+        <ImageButton
+            android:id="@+id/eventViewPanel_1_descriptionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:src="@drawable/button_description"
+            android:background="@android:color/transparent"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="71dp"
+            android:contentDescription="NULL"
+            android:layout_marginLeft="12dp"/>
+
+        <ImageButton
+            android:id="@+id/eventViewPanel_1_tagsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:src="@drawable/button_tags"
+            android:background="@android:color/transparent"
+            android:layout_gravity="bottom|right"
+            android:contentDescription="NULL"
+            android:layout_marginBottom="71dp"
+            android:layout_marginRight="12dp"/>
+
+        <ImageButton
+            android:id="@+id/eventViewPanel_1_backButton"
+            android:contentDescription="NULL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/loginsignup_backbutton"
+            android:background="@android:color/transparent"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="12dp" />
+
+    </FrameLayout>
+
+</FrameLayout>

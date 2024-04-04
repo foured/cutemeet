@@ -57,7 +57,7 @@
             app:srcCompat="@drawable/bottompanel_newsbutton" />
 
         <ImageButton
-            android:id="@+id/questionnairesPanel_imageButton13"
+            android:id="@+id/questionnairesPanel_accountButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

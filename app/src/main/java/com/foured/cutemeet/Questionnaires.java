@@ -71,5 +71,6 @@ public class Questionnaires extends Fragment {
         view.findViewById(R.id.questionnairesPanel_messabgerButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_questionnaires_to_messanger));
         view.findViewById(R.id.questionnairesPanel_eventsButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_questionnaires_to_events));
         view.findViewById(R.id.questionnairesPanel_newsButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_questionnaires_to_news));
+        view.findViewById(R.id.questionnairesPanel_accountButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_questionnaires_to_account));
     }
 }

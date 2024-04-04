@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainscreen_bg"
+    tools:context=".SetAccountDataPanel_1">
+
+    <TextView
+        android:id="@+id/createEventsPanel_1_pageTitleText"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Создание анкеты"
+        android:textColor="@color/textColor"
+        android:textSize="40sp"
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/setAccountDataPanel_1_logText"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="delete me"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="20sp"
+        android:typeface="sans" />
+
+    <ImageView
+        android:id="@+id/setAccountDataPanel_1_topDevidor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="55dp"
+        android:src="@drawable/topdevidor" />
+
+
+    <ImageView
+        android:id="@+id/setAccountDataPanel_1_avatarImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="matrix"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:src="@drawable/defaultavatar"/>
+
+    <ImageView
+        android:id="@+id/setAccountDataPanel_1_avatarPlaceView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="matrix"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:src="@drawable/avatarplace" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="626dp"
+        android:background="@drawable/loginsignup_bg_0rfl_1bl"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/setAccountDataPanel_1_pickImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/NULL"
+            android:src="@drawable/accountpanel_pickimagebutton"
+            android:text="Сохранить"
+            android:layout_gravity="left"
+            android:layout_marginStart="8dp" />
+
+        <ImageButton
+            android:id="@+id/setAccountDataPanel_1_nextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Сохранить"
+            android:contentDescription="/"
+            android:src="@drawable/accoutpanel_littlenextbutton"
+            android:background="@android:color/transparent"
+            android:layout_gravity="left"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
+
+
+</FrameLayout>

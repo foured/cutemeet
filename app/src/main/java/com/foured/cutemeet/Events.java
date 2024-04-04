@@ -26,6 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.foured.cutemeet.adapters.EventsAdapter;
+import com.foured.cutemeet.algorithms.StringAlgorithms;
 import com.foured.cutemeet.config.ConstStrings;
 import com.foured.cutemeet.models.EventData;
 import com.foured.cutemeet.net.HTTP;
@@ -119,6 +120,7 @@ public class Events extends Fragment {
         view.findViewById(R.id.eventsPanel_messangerButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_events_to_messanger));
         view.findViewById(R.id.eventsPanel_questionnairesButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_events_to_questionnaires));
         view.findViewById(R.id.eventsPanel_newsButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_events_to_news));
+        view.findViewById(R.id.eventsPanel_accountButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_events_to_account));
 
         createEventButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_events_to_createEventPanel_1));
 
@@ -224,7 +226,7 @@ public class Events extends Fragment {
                 CompletableFuture<String> future = client.get_async(url, params);
 
                 future.thenAcceptAsync(result -> {
-                    List<EventData> eventList = parseJsonArray(result, EventData.class);
+                    List<EventData> eventList = StringAlgorithms.parseJsonArray(result, EventData.class);
                     Log.i("Events", result);
 
                     getActivity().runOnUiThread(() -> {
@@ -263,7 +265,7 @@ public class Events extends Fragment {
                 CompletableFuture<String> future = client.get_async(url, params);
 
                 future.thenAcceptAsync(result -> {
-                    List<EventData> eventList = parseJsonArray(result, EventData.class);
+                    List<EventData> eventList = StringAlgorithms.parseJsonArray(result, EventData.class);
                     Log.i("Events", result);
 
                     getActivity().runOnUiThread(() -> {
@@ -318,7 +320,7 @@ public class Events extends Fragment {
 
         CompletableFuture<String> action = client.get_async(ConstStrings.serverAddress + "/activities/all");
         action.thenAcceptAsync(result -> {
-            List<EventData> eventList = parseJsonArray(result, EventData.class);
+            List<EventData> eventList = StringAlgorithms.parseJsonArray(result, EventData.class);
             Log.i("Events", result);
 
             getActivity().runOnUiThread(() -> {
@@ -334,19 +336,5 @@ public class Events extends Fragment {
                 loadingImage.setVisibility(View.GONE);
             });
         });
-    }
-
-    private static <T> List<T> parseJsonArray(String jsonArrayString, Class<T> classOfT) {
-        List<T> resultList = new ArrayList<>();
-
-        Gson gson = new Gson();
-        JsonArray jsonArray = JsonParser.parseString(jsonArrayString).getAsJsonArray();
-
-        for (JsonElement jsonElement : jsonArray) {
-            T object = gson.fromJson(jsonElement, classOfT);
-            resultList.add(object);
-        }
-
-        return resultList;
     }
 }
