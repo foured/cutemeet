@@ -158,4 +158,16 @@
         android:contentDescription="@string/NULL"
         android:src="@drawable/newspanel_newspanel_placeholder" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="350dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Вкладка 'новости' находится в разработке."
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+        android:typeface="sans"/>
+
 </FrameLayout>

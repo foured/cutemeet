@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.foured.cutemeet.algorithms.StringAlgorithms;
 import com.foured.cutemeet.config.ConstStrings;
+import com.foured.cutemeet.models.FullUserAccountData;
 import com.foured.cutemeet.models.UserAccountData;
 import com.foured.cutemeet.net.SpringSecurityClient;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -136,42 +137,33 @@ public class Account extends Fragment {
         loadingImage.setVisibility(View.VISIBLE);
         loadingAVD.start();
 
-        CompletableFuture<String> future1 = client.get_async(ConstStrings.serverAddress + "/account/get_accountData");
+        CompletableFuture<String> future1 = client.get_async(ConstStrings.serverAddress + "/account/get_fullAccountData");
 
         future1.thenAcceptAsync(result -> {
             Log.i("Account", result);
+            System.out.println(1);
             if (!Objects.equals(result, "")) {
-                UserAccountData uad = StringAlgorithms.parseJsonClass(result, UserAccountData.class);
+                System.out.println(2);
+
+                FullUserAccountData fuad = StringAlgorithms.parseJsonClass(result, FullUserAccountData.class);
+                System.out.println(3);
+
                 getActivity().runOnUiThread(() -> {
                     mainLayout.setVisibility(View.VISIBLE);
                     fillQuestionnaireButton.setVisibility(View.GONE);
 
-                    bDateText.setText(uad.birthdayDate);
-                    educationPlaceText.setText(uad.educationPlace);
-                    descriptionText.setText(uad.description);
-                    tagsText.setText(uad.tags);
-                    tgText.setText("Телеграмм: " + uad.tgLink);
+                    FIOText.setText(fuad.FIO);
+                    bDateText.setText(fuad.birthdayDate);
+                    educationPlaceText.setText(fuad.educationPlace);
+                    descriptionText.setText(fuad.description);
+                    tagsText.setText(fuad.tags);
+                    tgText.setText("Телеграмм: " + fuad.tgLink);
+                    usernameText.setText(fuad.username);
+                    byte[] imageData = Base64.decode(fuad.photoData, Base64.DEFAULT);
+                    avatarImage.setImageBitmap(BitmapFactory.decodeByteArray(imageData, 0, imageData.length));
+                    loadingAVD.stop();
+                    loadingImage.setVisibility(View.GONE);
                 });
-
-                CompletableFuture<String> future2 = client.get_async(ConstStrings.serverAddress + "/account/get_username");
-
-                future2.thenAcceptAsync(result1 -> {
-                    getActivity().runOnUiThread(() -> {
-                        usernameText.setText(result1);
-                    });
-                    CompletableFuture<String> future3 = client.get_async(ConstStrings.serverAddress + "/account/get_photo");
-
-                    future3.thenAcceptAsync(result2 -> {
-                        byte[] imageData = Base64.decode(result2, Base64.DEFAULT);
-                        getActivity().runOnUiThread(() -> {
-                            avatarImage.setImageBitmap(BitmapFactory.decodeByteArray(imageData, 0, imageData.length));
-                            loadingAVD.stop();
-                            loadingImage.setVisibility(View.GONE);
-                        });
-                    });
-                });
-
-
             } else {
                 getActivity().runOnUiThread(() -> {
                     mainLayout.setVisibility(View.GONE);

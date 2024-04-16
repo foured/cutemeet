@@ -23,6 +23,7 @@ import android.widget.TextView;
 import com.foured.cutemeet.algorithms.StringAlgorithms;
 import com.foured.cutemeet.config.BundleBuffer;
 import com.foured.cutemeet.config.ConstStrings;
+import com.foured.cutemeet.models.FullUserAccountData;
 import com.foured.cutemeet.models.UserAccountData;
 import com.foured.cutemeet.net.SpringSecurityClient;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -130,6 +131,9 @@ public class UserProfilePanel extends Fragment {
                 if(bundleBuffer.from == BundleBuffer.From.ViewEvent){
                     Navigation.findNavController(view).navigate(R.id.action_userProfilePanel_to_eventViewPanel_1, bundle);
                 }
+                if(bundleBuffer.from == BundleBuffer.From.QuestionnairePanel){
+                    Navigation.findNavController(view).navigateUp();
+                }
             }
         });
 
@@ -143,32 +147,25 @@ public class UserProfilePanel extends Fragment {
 
         List<SpringSecurityClient.Pair> args = new ArrayList<>();
         args.add(new SpringSecurityClient.Pair("username", username));
-        CompletableFuture<String> future1 = client.get_async(ConstStrings.serverAddress + "/operations/get_userAccountData", args);
+        CompletableFuture<String> future1 = client.get_async(ConstStrings.serverAddress + "/operations/get_fullAccountData", args);
 
         future1.thenAcceptAsync(result -> {
             Log.i("UserProfile", result);
             if (!Objects.equals(result, "")) {
-                UserAccountData uad = StringAlgorithms.parseJsonClass(result, UserAccountData.class);
+                FullUserAccountData fuad = StringAlgorithms.parseJsonClass(result, FullUserAccountData.class);
                 getActivity().runOnUiThread(() -> {
-                    usernameText.setText(username);
-                    bDateText.setText(uad.birthdayDate);
-                    educationPlaceText.setText(uad.educationPlace);
-                    descriptionText.setText(uad.description);
-                    tagsText.setText(uad.tags);
-                    tgText.setText("Телеграмм: " + uad.tgLink);
+                    FIOText.setText(fuad.FIO);
+                    bDateText.setText(fuad.birthdayDate);
+                    educationPlaceText.setText(fuad.educationPlace);
+                    descriptionText.setText(fuad.description);
+                    tagsText.setText(fuad.tags);
+                    tgText.setText("Телеграмм: " + fuad.tgLink);
+                    usernameText.setText(fuad.username);
+                    byte[] imageData = Base64.decode(fuad.photoData, Base64.DEFAULT);
+                    avatarImage.setImageBitmap(BitmapFactory.decodeByteArray(imageData, 0, imageData.length));
+                    loadingAVD.stop();
+                    loadingImage.setVisibility(View.GONE);
                 });
-
-                CompletableFuture<String> future2 = client.get_async(ConstStrings.serverAddress + "/operations/get_userPhoto", args);
-
-                future2.thenAcceptAsync(result2 -> {
-                    byte[] imageData = Base64.decode(result2, Base64.DEFAULT);
-                    getActivity().runOnUiThread(() -> {
-                        avatarImage.setImageBitmap(BitmapFactory.decodeByteArray(imageData, 0, imageData.length));
-                        loadingAVD.stop();
-                        loadingImage.setVisibility(View.GONE);
-                    });
-                });
-
             } else {
                 getActivity().runOnUiThread(() -> {
                     loadingAVD.stop();

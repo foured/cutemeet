@@ -112,6 +112,7 @@
             android:contentDescription="@string/NULL"/>
 
         <ImageButton
+            android:clickable="false"
             android:id="@+id/logInPanel_forgotPasswordButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

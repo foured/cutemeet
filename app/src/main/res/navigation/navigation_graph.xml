@@ -11,16 +11,24 @@
         tools:layout="@layout/fragment_messanger" >
         <action
             android:id="@+id/action_messanger_to_questionnaires"
-            app:destination="@id/questionnaires" />
+            app:destination="@id/questionnaires"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/action_messanger_to_events"
-            app:destination="@id/events" />
+            app:destination="@id/events"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/action_messanger_to_news"
-            app:destination="@id/news" />
+            app:destination="@id/news"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/action_messanger_to_account"
-            app:destination="@id/account" />
+            app:destination="@id/account"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/questionnaires"
@@ -29,16 +37,29 @@
         tools:layout="@layout/fragment_questionnaires" >
         <action
             android:id="@+id/action_questionnaires_to_news"
-            app:destination="@id/news" />
+            app:destination="@id/news"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_questionnaires_to_messanger"
-            app:destination="@id/messanger" />
+            app:destination="@id/messanger"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_questionnaires_to_events"
-            app:destination="@id/events" />
+            app:destination="@id/events"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/action_questionnaires_to_account"
-            app:destination="@id/account" />
+            app:destination="@id/account"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+        <action
+            android:id="@+id/action_questionnaires_to_userProfilePanel"
+            app:destination="@id/userProfilePanel"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/events"
@@ -67,7 +88,9 @@
             app:exitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/action_events_to_account"
-            app:destination="@id/account" />
+            app:destination="@id/account"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
         <action
             android:id="@+id/action_events_to_eventViewPanel_1"
             app:destination="@id/eventViewPanel_1"
@@ -81,16 +104,24 @@
         tools:layout="@layout/fragment_news" >
         <action
             android:id="@+id/action_news_to_questionnaires"
-            app:destination="@id/questionnaires" />
+            app:destination="@id/questionnaires"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_news_to_events"
-            app:destination="@id/events" />
+            app:destination="@id/events"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_news_to_messanger"
-            app:destination="@id/messanger" />
+            app:destination="@id/messanger"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_news_to_account"
-            app:destination="@id/account" />
+            app:destination="@id/account"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/welcomeScreen"
@@ -188,8 +219,8 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
         <action
-            android:id="@+id/action_logInScreen_to_news"
-            app:destination="@id/news"
+            android:id="@+id/action_logInScreen_to_account"
+            app:destination="@id/account"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left" />
     </fragment>
@@ -335,7 +366,9 @@
             app:exitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_account_to_news"
-            app:destination="@id/news" />
+            app:destination="@id/news"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_account_to_setAccountDataPanel_1"
             app:destination="@id/setAccountDataPanel_1"
@@ -461,6 +494,11 @@
         <action
             android:id="@+id/action_userProfilePanel_to_eventViewPanel_1"
             app:destination="@id/eventViewPanel_1"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_userProfilePanel_to_questionnaires"
+            app:destination="@id/questionnaires"
             app:enterAnim="@anim/slide_in_left"
             app:exitAnim="@anim/slide_out_right" />
     </fragment>

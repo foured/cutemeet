@@ -27,7 +27,8 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:contentDescription="@string/NULL"
-            app:srcCompat="@drawable/bottompanel_messengerbutton" />
+            app:srcCompat="@drawable/bottompanel_messengerbutton">
+        </ImageButton>
 
         <ImageButton
             android:id="@+id/messangerPanel_questionnairesButton"
@@ -157,5 +158,27 @@
         android:background="@android:color/transparent"
         android:contentDescription="@string/NULL"
         android:src="@drawable/chatspanel_contactpanel_placeholder" />
+
+    <ImageView
+        android:id="@+id/messangerPanel_hilighter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/hilighter"
+        app:layout_constraintBottom_toBottomOf="@id/messangerPanel_messabgerButton"
+        app:layout_constraintStart_toStartOf="@id/messangerPanel_messabgerButton"
+        app:layout_constraintEnd_toEndOf="@id/messangerPanel_messabgerButton"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="300dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Вкладка 'чаты' находится в разработке, для связи предлагается использовать telegram, ссылка на который должна быть у каждого пользователя в профиле."
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+        android:typeface="sans"/>
 
 </FrameLayout>

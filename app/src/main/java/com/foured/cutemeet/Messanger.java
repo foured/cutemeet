@@ -10,6 +10,9 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -72,5 +75,13 @@ public class Messanger extends Fragment {
         view.findViewById(R.id.messangerPanel_eventsButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_messanger_to_events));
         view.findViewById(R.id.messangerPanel_newsButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_messanger_to_news));
         view.findViewById(R.id.messangerPanel_accountButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_messanger_to_account));
+
+        //ImageButton b = view.findViewById(R.id.messangerPanel_messabgerButton);
+        //LinearLayout bottomPanel = view.findViewById(R.id.messangerPanel_bottomPanel_linearLayout);
+        //ImageView hilighter = view.findViewById(R.id.messangerPanel_hilighter);
+        //int[] location = new int[2];
+        //b.getLocationInWindow(location);
+        //hilighter.setX(location[0]);
+        //hilighter.setY(location[1]);
     }
 }

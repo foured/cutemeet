@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mainscreen_bg"
-    tools:context=".Messanger">
+    tools:context=".Questionnaires">
 
     <LinearLayout
         android:id="@+id/questionnairesPanel_bottomPanel_linearLayout"
@@ -79,56 +79,16 @@
         android:textSize="40sp"
         android:typeface="sans" />
 
-    <LinearLayout
-        android:id="@+id/questionnairesPanel_toolsPanel_linearLayout"
+    <ImageButton
+        android:id="@+id/questionnairesPanel_findButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|right"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="26dp"
-        android:background="@drawable/tooslpanel_border_4elems"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/questionnairesPanel_locationButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/NULL"
-            android:src="@drawable/tooslpanel_position"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <ImageButton
-            android:id="@+id/questionnairesPanel_magnifierButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/NULL"
-            android:src="@drawable/tooslpanel_magnifier"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <ImageButton
-            android:id="@+id/questionnairesPanel_plusButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/NULL"
-            android:src="@drawable/tooslpanel_plus"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <ImageButton
-            android:id="@+id/questionnairesPanel_settingsButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/NULL"
-            android:src="@drawable/tooslpanelsettings"
-            tools:ignore="TouchTargetSizeCheck" />
-    </LinearLayout>
+        android:src="@drawable/findimage"
+        android:background="@android:color/transparent"
+        android:layout_gravity="right"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="11dp"
+        android:contentDescription="nothing"/>
 
     <ImageView
         android:id="@+id/questionnairesPanel_topDevidor"
@@ -138,34 +98,502 @@
         android:layout_marginTop="55dp"
         android:src="@drawable/topdevidor" />
 
-    <ImageButton
-        android:id="@+id/questionnairesPanel_questionnaireButton_1"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/questionnairesPanel_logTextView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_marginTop="72dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/NULL"
-        android:src="@drawable/questionnairespanel_questionnairepanel_placeholder" />
+        android:layout_marginTop="60dp"
+        android:gravity="center_horizontal"
+        android:text="delete me"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+        android:typeface="sans"/>
 
-    <ImageButton
-        android:id="@+id/questionnairesPanel_questionnaireButton_2"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/questionnairesPanel_questionnairePrev_recyclerView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_marginTop="138dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/NULL"
-        android:src="@drawable/questionnairespanel_questionnairepanel_placeholder" />
+        android:layout_height="550dp"
+        android:layout_marginTop="90dp"
+        android:layout_gravity="center_horizontal"
+        android:overScrollMode="never"/>
 
-    <ImageButton
-        android:id="@+id/questionnairesPanel_questionnaireButton_3"
+    <FrameLayout
+        android:visibility="gone"
+        android:id="@+id/questionnairesPanel_findPanel"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="55dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/findpanel_q_topbg"/>
+
+        <ImageButton
+            android:id="@+id/questionnairesPanel_findPanel_findByTagsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/findpanel_findbytags_active"
+            android:background="@android:color/transparent"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="54dp"
+            android:contentDescription="nothing"/>
+
+        <ImageButton
+            android:id="@+id/questionnairesPanel_findPanel_findByNameButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:src="@drawable/findpanel_q_findbynamebutton_notactive"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="64dp"
+            android:contentDescription="nothing"/>
+
+        <ImageButton
+            android:id="@+id/questionnairesPanel_findPanel_findByEducationPlaceButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/findpanel_q_findbyplacebutton_notactive"
+            android:background="@android:color/transparent"
+            android:layout_gravity="right"
+            android:layout_marginRight="21dp"
+            android:contentDescription="nothing"
+            android:layout_marginTop="50dp"/>
+
+        <ImageButton
+            android:id="@+id/questionnairesPanel_findPanel_findByAgeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:src="@drawable/findpanel_q_findbyagebutton_notactive"
+            android:background="@android:color/transparent"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="104dp"
+            android:contentDescription="nothing"/>
+
+        <ImageButton
+            android:id="@+id/questionnairesPanel_findPanel_findByTgLinkButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:src="@drawable/findpanel_q_findbytgbutton_notactive"
+            android:background="@android:color/transparent"
+            android:layout_gravity="right"
+            android:layout_marginRight="44dp"
+            android:layout_marginTop="104dp"
+            android:contentDescription="nothing"/>
+
+        <!--BY TAGS-->
+        <FrameLayout
+            android:visibility="visible"
+            android:id="@+id/questionnairesPanel_findPanel_findByTagsPanel"
+            android:layout_width="371dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="159dp">
+
+            <!--SIMILAR-->
+            <FrameLayout
+                android:visibility="visible"
+                android:id="@+id/questionnairesPanel_findPanel_findByTagsPanel_bySimilar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/findpanel_q_findbytags_bysimular_bg"/>
+
+                <ImageButton
+                    android:id="@+id/questionnairesPanel_findPanel_findByTagsPanel_bySimilar_backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/findpanel_backbutton"
+                    android:background="@android:color/transparent"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginBottom="18dp"
+                    android:contentDescription="nothing"/>
+
+                <ImageButton
+                    android:id="@+id/questionnairesPanel_findPanel_findByTagsPanel_bySimilar_findButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/findpanel_findbutton"
+                    android:background="@android:color/transparent"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginRight="23dp"
+                    android:layout_marginBottom="18dp"
+                    android:contentDescription="nothing"/>
+            </FrameLayout>
+            <!--CUSTOM-->
+            <FrameLayout
+                android:visibility="gone"
+                android:id="@+id/questionnairesPanel_findPanel_findByTagsPanel_byCustom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/findpanel_q_findbytags_bycustom_bg"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Теги (через запятую):"
+                    android:layout_marginTop="90dp"
+                    android:textColor="@color/textColor"
+                    android:textSize="24sp"
+                    android:typeface="sans"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="119dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/questionnairesPanel_findPanel_findByTagsPanel_byCustom_tagsEditText"
+                        android:layout_width="328dp"
+                        android:layout_height="89dp"
+                        android:gravity="top|left"
+                        android:text="delete me"
+                        android:textSize="15sp"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@color/textColor"
+                        android:background="@drawable/findpanel_tagsinputfield"
+                        android:padding="3dp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageButton
+                    android:id="@+id/questionnairesPanel_findPanel_findByTagsPanel_byCustom_backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/findpanel_backbutton"
+                    android:background="@android:color/transparent"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginBottom="18dp"/>
+
+                <ImageButton
+                    android:id="@+id/questionnairesPanel_findPanel_findByTagsPanel_byCustom_findButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/findpanel_findbutton"
+                    android:background="@android:color/transparent"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginRight="23dp"
+                    android:layout_marginBottom="18dp"/>
+            </FrameLayout>
+
+            <ImageButton
+                android:id="@+id/questionnairesPanel_findPanel_findByTagsPanel_bySimilarButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/findpanel_q_findbytags_bysimularbutton_active"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="20dp"
+                android:contentDescription="nothing"/>
+            
+            <ImageButton
+                android:id="@+id/questionnairesPanel_findPanel_findByTagsPanel_byCustomButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/findpanel_q_findbytags_bycustombutton_notactive"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="48dp"
+                android:contentDescription="nothing"/>
+
+        </FrameLayout>
+        <!--BY NAME-->
+        <FrameLayout
+            android:visibility="gone"
+            android:id="@+id/questionnairesPanel_findPanel_findByNamePanel"
+            android:layout_width="371dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="159dp"
+            android:background="@drawable/findpanel_q_findbyname_bg">
+
+            <TextView
+                android:layout_width="314dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="0dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Псевдоним"
+                android:textColor="@color/textColor"
+                android:textSize="24sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/questionnairesPanel_findPanel_findByNamePanel_nameEditText"
+                    android:layout_width="314dp"
+                    android:layout_height="48dp"
+                    android:text="delete me"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/textColor"
+                    android:background="@drawable/loginsignup_textinputbg"
+                    android:padding="0dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageButton
+                android:id="@+id/questionnairesPanel_findPanel_findByNamePanel_backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/findpanel_backbutton"
+                android:background="@android:color/transparent"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="23dp"
+                android:layout_marginBottom="13dp"/>
+
+            <ImageButton
+                android:id="@+id/questionnairesPanel_findPanel_findByNamePanel_findButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/findpanel_findbutton"
+                android:background="@android:color/transparent"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="23dp"
+                android:layout_marginBottom="13dp"/>
+        </FrameLayout>
+        <!--BY EDUCATION PLACE-->
+        <FrameLayout
+            android:visibility="gone"
+            android:id="@+id/questionnairesPanel_findPanel_findByEducationPlacePanel"
+            android:layout_width="371dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="159dp"
+            android:background="@drawable/findpanel_q_findbyplace_bg">
+
+            <TextView
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:text="Поиск произдодится по вашему месту учёбы"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/textColor"
+                android:textSize="20sp"
+                android:typeface="sans"/>
+
+            <ImageButton
+                android:id="@+id/questionnairesPanel_findPanel_findByEducationPlacePanel_backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/findpanel_backbutton"
+                android:background="@android:color/transparent"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="23dp"
+                android:layout_marginBottom="13dp"/>
+
+            <ImageButton
+                android:id="@+id/questionnairesPanel_findPanel_findByEducationPlacePanel_findButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/findpanel_findbutton"
+                android:background="@android:color/transparent"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="23dp"
+                android:layout_marginBottom="13dp"/>
+
+    </FrameLayout>
+        <!--BY AGE-->
+        <FrameLayout
+            android:visibility="gone"
+            android:id="@+id/questionnairesPanel_findPanel_findByAgePanel"
+            android:layout_width="371dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="159dp">
+
+            <!--SIMILAR-->
+            <FrameLayout
+                android:visibility="visible"
+                android:id="@+id/questionnairesPanel_findPanel_findByAgePanel_bySimilar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/findpanel_q_findbytags_bysimular_bg"/>
+
+                <ImageButton
+                    android:id="@+id/questionnairesPanel_findPanel_findByAgePanel_bySimilar_backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/findpanel_backbutton"
+                    android:background="@android:color/transparent"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginBottom="18dp"/>
+
+                <ImageButton
+                    android:id="@+id/questionnairesPanel_findPanel_findByAgePanel_bySimilar_findButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/findpanel_findbutton"
+                    android:background="@android:color/transparent"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginRight="23dp"
+                    android:layout_marginBottom="18dp"/>
+            </FrameLayout>
+            <!--RANGE-->
+            <FrameLayout
+                android:visibility="gone"
+                android:id="@+id/questionnairesPanel_findPanel_findByAgePanel_byRange"
+                android:layout_width="wrap_content"
+                android:layout_height="257dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/findpanel_q_findbyage_byrange_bg">
+
+                <TextView
+                    android:layout_width="314dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="100dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Диапазон (число)"
+                    android:textColor="@color/textColor"
+                    android:textSize="24sp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="130dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/questionnairesPanel_findPanel_findByAgePanel_byRange_rangeEditText"
+                        android:layout_width="314dp"
+                        android:layout_height="48dp"
+                        android:text="delete me"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@color/textColor"
+                        android:background="@drawable/loginsignup_textinputbg"
+                        android:padding="0dp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageButton
+                    android:id="@+id/questionnairesPanel_findPanel_findByAgePanel_byRange_backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/findpanel_backbutton"
+                    android:background="@android:color/transparent"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginBottom="18dp"/>
+
+                <ImageButton
+                    android:id="@+id/questionnairesPanel_findPanel_findByAgePanel_byRange_findButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/findpanel_findbutton"
+                    android:background="@android:color/transparent"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginRight="23dp"
+                    android:layout_marginBottom="18dp"/>
+            </FrameLayout>
+
+            <ImageButton
+                android:id="@+id/questionnairesPanel_findPanel_findByAgePanel_bySimilarButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/findpanel_q_findbyage_bysimularbutton_active"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="20dp"/>
+
+            <ImageButton
+                android:id="@+id/questionnairesPanel_findPanel_findByAgePanel_byRangeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/findpanel_q_findbyage_byrangebutton_notactive"
+                android:background="@android:color/transparent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="48dp"/>
+
+        </FrameLayout>
+        <!--BY TG LINK-->
+        <FrameLayout
+            android:visibility="gone"
+            android:id="@+id/questionnairesPanel_findPanel_findByTgLinkPanel"
+            android:layout_width="371dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="159dp"
+            android:background="@drawable/findpanel_q_findbyname_bg">
+
+            <TextView
+                android:layout_width="314dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="0dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="Телеграм id:"
+                android:textColor="@color/textColor"
+                android:textSize="24sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/questionnairesPanel_findPanel_findByTgLinkPanel_tgEditText"
+                    android:layout_width="314dp"
+                    android:layout_height="48dp"
+                    android:text="delete me"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/textColor"
+                    android:background="@drawable/loginsignup_textinputbg"
+                    android:padding="0dp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <ImageButton
+                android:id="@+id/questionnairesPanel_findPanel_findByTgLinkPanel_backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/findpanel_backbutton"
+                android:background="@android:color/transparent"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="23dp"
+                android:layout_marginBottom="13dp"/>
+
+            <ImageButton
+                android:id="@+id/questionnairesPanel_findPanel_findByTgLinkPanel_findButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/findpanel_findbutton"
+                android:background="@android:color/transparent"
+                android:layout_gravity="bottom|right"
+                android:layout_marginRight="23dp"
+                android:layout_marginBottom="13dp"/>
+        </FrameLayout>
+
+    </FrameLayout>
+    <ImageView
+        android:visibility="gone"
+        android:id="@+id/questionnairesPanel_loadingImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_marginTop="204dp"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/NULL"
-        android:src="@drawable/questionnairespanel_questionnairepanel_placeholder" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="250dp"
+        android:src="@drawable/loading_anim"/>
 
 </FrameLayout>

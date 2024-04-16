@@ -139,7 +139,7 @@ public class LogInScreen extends Fragment {
                             loadingImage.setVisibility(View.GONE);
                         });
 
-                        Navigation.findNavController(view).navigate(R.id.action_logInScreen_to_news);
+                        Navigation.findNavController(view).navigate(R.id.action_logInScreen_to_account);
                     }
                     catch (AuthenticationException ae){
                         Log.w("LOGIN", "Login error: \n" + ae);
