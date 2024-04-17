@@ -94,8 +94,7 @@ public class LogInScreen extends Fragment {
         TextView logText = view.findViewById(R.id.logInPanel_logText);
         logText.setText("");
 
-        view.findViewById(R.id.logInPanel_forgotPasswordButton)
-                .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_logInScreen_to_passwordRecoveryScreen_1));
+        //view.findViewById(R.id.logInPanel_forgotPasswordButton).setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_logInScreen_to_passwordRecoveryScreen_1));
         view.findViewById(R.id.logInPanel_registerButton)
                 .setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_logInScreen_to_registrationScreen_1));
 
