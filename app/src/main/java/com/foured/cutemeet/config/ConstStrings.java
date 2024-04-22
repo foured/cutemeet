@@ -1,8 +1,7 @@
 package com.foured.cutemeet.config;
 
 public class ConstStrings {
-    //192.168.0.101
-    public static final String serverAddress = "http://158.160.18.187:8080";
+    public static final String serverAddress = "http://84.252.142.125:8080";
 
     public static final String sharedPreferencesUserDataPath = "UserAccountLocalData";
     public static final String sharedPreferences_usernameKey = "username";
